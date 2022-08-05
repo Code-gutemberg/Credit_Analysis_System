@@ -17,6 +17,12 @@ Resumo versão 1.1:
 Modificar a versão 01 do sistema e propor uma projeção de sistema de análise de crédito de pessoa física e pessoa jurídica.
 
 Projeção para versão 02:
+    - Modificações
+        - Alterar o nome da opção 01 e 02
+        - Incluir nome do sistema acima do Menu Principal
+        - Alterar menu de pessoas cadastradas
+        - Alterar menu de cadastro
+        
     - Cadastro de Pessoa Física
         - Cadastro de CPF
         - Melhora do cadastro de idade
