@@ -16,7 +16,7 @@ Técnicas utilizadas:
 Resumo versão 1.1:
 Modificar a versão 01 do sistema e propor uma projeção de sistema de análise de crédito de pessoa física e pessoa jurídica.
 
-Projeção para versão 02:
+Projeção para versão 1.1:
     - Modificações
         - Alterar o nome da opção 01 e 02
         - Incluir nome do sistema acima do Menu Principal
