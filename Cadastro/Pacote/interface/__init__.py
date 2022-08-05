@@ -28,15 +28,26 @@ def titulo(msg):
 
 def subtitulo():
     menu = dict()
-    menu[1] = 'Ver Pessoas Cadastradas'
-    menu[2] = 'Cadastrar nova pessoa'
-    menu[3] = 'Sair do Sistema'
-    print('=' * 50)
+    menu[1] = 'Banco de Dados [=]'
+    menu[2] = 'Cadastrar [+]'
+    menu[3] = 'Proposta de Crédito [$]'
+    menu[4] = 'Sair do Sistema [!]'
     for k, v in menu.items():
         print(f'{k} - {v}')
     print('=' * 50)
 
 
-def pessoas_cadastradas():
+def pessoas_db():
     print('=' * 50)
-    titulo('[=] PESSOAS CADASTRADAS'.center(50))
+    titulo('[=] BANCO DE DADOS'.center(50))
+
+
+def submenu():
+    print('=' * 50)
+    print('[1] - Pessoa Física\n'
+          '[2] - Pessoa Jurídica')
+    print('=' * 50)
+
+
+def erro_codigo():
+    print('\033[0;31mERRO, Digite um número válido.\033[m')

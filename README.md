@@ -29,6 +29,7 @@ Projeção para versão 02:
         - Cadastro de Renda Liquida
 
     - Cadastro de Pessoa Jurídica
+        - Cadastro Nome da Empresa
         - Cadastro de CNPJ
         - Cadastro de Porte da empresa
         - Cadastro do Capital imobilizado
