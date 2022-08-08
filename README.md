@@ -30,7 +30,7 @@ Sistema simples **(prompt command)** que cadastra pessoas e a idade, escrito em 
 
 Modificar a __*versão 1.0*__ para sistema de análise de crédito de pessoa física e pessoa jurídica.
 
-**Projeção para versão 1.1:**
+**Escopo para versão 1.1:**
 
 - [x] Modificações
     - [x] Alterar o nome da opção 01 e 02
