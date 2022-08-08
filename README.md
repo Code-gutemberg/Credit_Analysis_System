@@ -59,4 +59,15 @@ Modificar a __*versão 1.0*__ para sistema de análise de crédito de pessoa fí
 * Dicionário
 * Lista
 
+**Telas do Programa:**
+
+[Tela Principal](https://user-images.githubusercontent.com/109303611/183444915-c5446a8f-d05c-4f4d-a1f5-97349923137d.JPG)
+
+[Tela Banco de Dados Pessoa fisica](https://user-images.githubusercontent.com/109303611/183444934-cd663dc5-8add-4897-be1e-d7ff03238900.JPG)
+
+[Tela Banco de Dados Pessoa jurídica](https://user-images.githubusercontent.com/109303611/183444968-366dcbc2-9afc-48e4-85e2-00f5044ba12e.JPG)
+
+[Tela análise de proposta](https://user-images.githubusercontent.com/109303611/183444983-6f3ca69f-c53c-4428-9814-5616e0cf0cb9.JPG)
+
 ___
+
