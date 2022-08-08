@@ -1,5 +1,5 @@
 # Cadastro
-Resumo versão 1.0:
+**Resumo versão 1.0**:
 Sistema simples (prompt command) que cadastra pessoas e a idade, escrito em Python tendo como base de dados arquivo com extenção txt. 
 Técnicas utilizadas:
     - importações de bibliotecas
