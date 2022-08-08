@@ -18,17 +18,11 @@ while True:
     interface.subtitulo()       # Chama as opções do programa
     usuario = interface.LeiaInt('Digite o código correspondente: ')
     if usuario == 1:
+        interface.titulo('[$] ANÁLISE DE PROPOSTA DE CRÉDITO!')
         interface.submenu()
-        while True:
-            usuario = interface.LeiaInt('Digite o código correspondente: ')
-            if usuario == 1:
-                dados.ler_arquivo_Pfisica(arquivo_Pfisica)
-                break
-            elif usuario == 2:
-                dados.ler_arquivo_Pjuridica(arquivo_Pjuridica)
-                break
-            else:
-                interface.erro_codigo()
+        usuario = interface.LeiaInt('Digite o código correspondente: ')
+        sleep(1)
+        break        
     elif usuario == 2:
         interface.titulo('[+] NOVO CADASTRO')
         interface.submenu()
@@ -52,9 +46,9 @@ while True:
                         print(f'\033[31m ERRO, máximo caracteres [14] \033[m')
                     else:
                         idade = interface.LeiaInt('Idade: ')
-                        renda = interface.LeiaInt('Renda Liquida: R$ ')
+                        renda = dados.leiaDinheiro('Renda Liquida: R$ ')
                         break
-            dados.escrever_arquivo_fisico(
+            dados.escrever_arquivo_Pfisico(
                 arquivo_Pfisica, nome, cpf, idade, renda)  # type: ignore
         elif usuario == 2:
             fluxo = list()
@@ -78,26 +72,34 @@ while True:
                         print(f'\033[31m ERRO, máximo caracteres [14] \033[m')
                     else:
                         porte = str(input('Porte da empresa: '))
-                        capital = interface.LeiaInt('Capital Imobilizado: R$ ')
-                        fluxo.append(interface.LeiaInt(
+                        capital = dados.leiaDinheiro('Capital Imobilizado: R$ ')
+                        fluxo.append(dados.leiaDinheiro(
                             'Fluxo de Caixa Mês 1/3: R$ '))
-                        fluxo.append(interface.LeiaInt(
+                        fluxo.append(dados.leiaDinheiro(
                             'Fluxo de Caixa Mês 2/3: R$ '))
-                        fluxo.append(interface.LeiaInt(
+                        fluxo.append(dados.leiaDinheiro(
                             'Fluxo de Caixa Mês 3/3: R$ '))
-                        dre = interface.LeiaInt(
+                        dre = dados.leiaDinheiro(
                             'Demonstração de Resultado do Exercício: R$ ')
                         soma_fluxo = sum(fluxo)
                         break
-            dados.escrever_arquivo_juridico(arquivo_Pjuridica, nome, cnpj, porte,
+            dados.escrever_arquivo_Pjuridico(arquivo_Pjuridica, nome, cnpj, porte,
                                             capital, soma_fluxo, dre)  # type: ignore
     elif usuario == 3:
-        interface.titulo('[$] ANÁLISE DE PROPOSTA DE CRÉDITO!')
-        interface.submenu()
-        usuario = interface.LeiaInt('Digite o código correspondente: ')
-        sleep(1)
         break
     elif usuario == 4:
+        interface.submenu()
+        while True:
+            usuario = interface.LeiaInt('Digite o código correspondente: ')
+            if usuario == 1:
+                dados.ler_arquivo_Pfisica(arquivo_Pfisica)
+                break
+            elif usuario == 2:
+                dados.ler_arquivo_Pjuridica(arquivo_Pjuridica)
+                break
+            else:
+                interface.erro_codigo()
+    elif usuario == 5:
         interface.titulo('[!] PROGRAMA ENCERRADO COM SUCESSO!')
         sleep(1)
         break

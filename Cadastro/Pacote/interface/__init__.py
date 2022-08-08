@@ -28,10 +28,11 @@ def titulo(msg):
 
 def subtitulo():
     menu = dict()
-    menu[1] = 'Banco de Dados [=]'
-    menu[2] = 'Cadastrar [+]'
-    menu[3] = 'Proposta de Crédito [$]'
-    menu[4] = 'Sair do Sistema [!]'
+    menu[1] = 'Proposta de Crédito [ $ ]'
+    menu[2] = 'Cadastrar Usuário \t[ + ]'
+    menu[3] = 'Remover Usuário \t[DEL]'
+    menu[4] = 'Consultar Usuário \t[ = ]'
+    menu[5] = 'Sair do Sistema \t[ ! ]'
     for k, v in menu.items():
         print(f'{k} - {v}')
     print('=' * 50)
@@ -51,3 +52,15 @@ def submenu():
 
 def erro_codigo():
     print('\033[0;31mERRO, Digite um número válido.\033[m')
+
+
+def Real(preço, moeda='R$'):     # Formata para Real BR.
+    """-> Descrição
+
+    Parâmetros:
+        preço (int/float): Preço recebido
+        moeda (str, optional): Opcional com formato em Real Brasileiro R$'.
+    Retorno:
+        str: retorna o valor formatado em Real Brasileiro R$'.
+    """
+    return f'{moeda} {preço:.2f}'.replace(".", ",")

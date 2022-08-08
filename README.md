@@ -86,17 +86,17 @@ Modificar a __*versão 1.1*__ e melhorar o sistema de análise de crédito.
 
 **Escopo para versão 1.2:**
 
-- [ ] Modificações:
-    - [ ] Alterar a moeda de saída para Real Brasileiro ignorando a pontuação padrão do python.
-    - [ ] Vincular o ID de usuários cadastrados à uma lista padrão para consulta futura.
-    - [ ] Alterar o nome do menu Cadastrar para Cadastrar Usuário.
-    - [ ] Alterar o nome do menu Banco de Dados para Consultar Usuário.
-    - [ ] Criar um menu para remover usuários cadastrados.
-    - [ ] Alterar as ordens do Menu Principal.
-        - [ ] 1 para Proposta de Crédito.
-        - [ ] 2 para Cadastrar Usuário.
-        - [ ] 3 para Remover Usuário.
-        - [ ] 4 para Consultar Usuário.
-        - [ ] 5 para Sair do Sistema.
+- [x] Modificações:
+    - [x] Alterar a moeda de saída para Real Brasileiro ignorando a pontuação padrão do python.
+    - [x] Vincular o ID de usuários cadastrados à um dicionário padrão para consulta futura.
+    - [x] Alterar o nome do menu Cadastrar para Cadastrar Usuário.
+    - [x] Alterar o nome do menu Banco de Dados para Consultar Usuário.
+    - [x] Criar um menu para remover usuários cadastrados.
+    - [x] Alterar as ordens do Menu Principal.
+        - [x] 1 para Proposta de Crédito.
+        - [x] 2 para Cadastrar Usuário.
+        - [x] 3 para Remover Usuário.
+        - [x] 4 para Consultar Usuário.
+        - [x] 5 para Sair do Sistema.
     - [ ] Definir regras de aprovação de crédito.
     - [ ] Definir regras de pré-aprovação de crédito.
