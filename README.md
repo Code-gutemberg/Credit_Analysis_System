@@ -80,3 +80,24 @@ Modificar a __*versão 1.0*__ para sistema de análise de crédito de pessoa fí
 
 ___
 
+### Resumo versão 1.2:
+
+Modificar a __*versão 1.1*__ e melhorar o sistema de análise de crédito.
+
+**Projeção para versão 1.1:**
+
+- [ ] Modificações:
+    - [ ] Alterar a moeda de saída para Real Brasileiro ignorando a pontuação padrão do python.
+    - [ ] Vincular o ID de usuários cadastrados à uma lista padrão para consulta futura.
+    - [ ] Alterar o nome do menu Cadastrar para Cadastrar Usuário.
+    - [ ] Alterar o nome do menu Banco de Dados para Consultar Usuário.
+    - [ ] Criar um menu para remover usuários cadastrados.
+    - [ ] Alterar as ordens do Menu Principal.
+        - [ ] 1 para Proposta de Crédito.
+        - [ ] 2 para Cadastrar Usuário.
+        - [ ] 3 para Remover Usuário.
+        - [ ] 4 para Consultar Usuário.
+        - [ ] 5 para Sair do Sistema.
+    - [ ] Definir regras de aprovação de crédito.
+    - [ ] Definir regras de pré-aprovação de crédito.
+    
