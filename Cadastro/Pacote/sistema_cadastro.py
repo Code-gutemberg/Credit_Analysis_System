@@ -3,7 +3,6 @@ from time import sleep
 import interface
 import dados
 
-
 arquivo_Pfisica = 'banco_dados_Pfisica.txt'
 arquivo_Pjuridica = 'banco_dados_Pjuridica.txt'
 # Se não existir o arquivo.txt, cria-se
@@ -46,10 +45,9 @@ while True:
                         print(f'\033[31m ERRO, máximo caracteres [14] \033[m')
                     else:
                         idade = interface.LeiaInt('Idade: ')
-                        renda = dados.leiaDinheiro('Renda Liquida: R$ ')
+                        renda = dados.ler_moeda('Renda Liquida: R$ ')
                         break
-            dados.escrever_arquivo_Pfisico(
-                arquivo_Pfisica, nome, cpf, idade, renda)  # type: ignore
+            dados.escrever_Pfisica(arquivo_Pfisica, nome, cpf, idade, renda)  # type: ignore
         elif usuario == 2:
             fluxo = list()
             while True:
@@ -72,18 +70,14 @@ while True:
                         print(f'\033[31m ERRO, máximo caracteres [14] \033[m')
                     else:
                         porte = str(input('Porte da empresa: '))
-                        capital = dados.leiaDinheiro('Capital Imobilizado: R$ ')
-                        fluxo.append(dados.leiaDinheiro(
-                            'Fluxo de Caixa Mês 1/3: R$ '))
-                        fluxo.append(dados.leiaDinheiro(
-                            'Fluxo de Caixa Mês 2/3: R$ '))
-                        fluxo.append(dados.leiaDinheiro(
-                            'Fluxo de Caixa Mês 3/3: R$ '))
-                        dre = dados.leiaDinheiro(
-                            'Demonstração de Resultado do Exercício: R$ ')
+                        capital = dados.ler_moeda('Capital Imobilizado: R$ ')
+                        fluxo.append(dados.ler_moeda('Fluxo de Caixa Mês 1/3: R$ '))
+                        fluxo.append(dados.ler_moeda('Fluxo de Caixa Mês 2/3: R$ '))
+                        fluxo.append(dados.ler_moeda('Fluxo de Caixa Mês 3/3: R$ '))
+                        dre = dados.ler_moeda('Demonstração de Resultado do Exercício: R$ ')
                         soma_fluxo = sum(fluxo)
                         break
-            dados.escrever_arquivo_Pjuridico(arquivo_Pjuridica, nome, cnpj, porte,
+            dados.escrever_Pjuridica(arquivo_Pjuridica, nome, cnpj, porte,
                                             capital, soma_fluxo, dre)  # type: ignore
     elif usuario == 3:
         break
@@ -92,10 +86,10 @@ while True:
         while True:
             usuario = interface.LeiaInt('Digite o código correspondente: ')
             if usuario == 1:
-                dados.ler_arquivo_Pfisica(arquivo_Pfisica)
+                dados.ler_db_Pfisica(arquivo_Pfisica)
                 break
             elif usuario == 2:
-                dados.ler_arquivo_Pjuridica(arquivo_Pjuridica)
+                dados.ler_db_Pjuridica(arquivo_Pjuridica)
                 break
             else:
                 interface.erro_codigo()

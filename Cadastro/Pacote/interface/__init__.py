@@ -38,7 +38,7 @@ def subtitulo():
     print('=' * 50)
 
 
-def pessoas_db():
+def usuarios_db():
     print('=' * 50)
     titulo('[=] BANCO DE DADOS'.center(50))
 

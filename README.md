@@ -92,6 +92,7 @@ Modificar a __*versão 1.1*__ e melhorar o sistema de análise de crédito.
     - [x] Alterar o nome do menu Cadastrar para Cadastrar Usuário.
     - [x] Alterar o nome do menu Banco de Dados para Consultar Usuário.
     - [x] Criar um menu para remover usuários cadastrados.
+    - [x] Renomear funções como nomes extensos.
     - [x] Alterar as ordens do Menu Principal.
         - [x] 1 para Proposta de Crédito.
         - [x] 2 para Cadastrar Usuário.

@@ -1,9 +1,7 @@
 '''FUNÇÕES PARA TESTAR, CRIAR, ABRIR E ALIMENTAR DOIS BANCOS DE DADOS EM TXT'''
-
 from aifc import Error
 import interface
 from time import sleep
-
 
 def arquivo_existe(entrada):
     """Descrição
@@ -38,7 +36,7 @@ def criar_arquivo(entrada):
         print(f'\033[0;31mAquivo {entrada} criado com sucesso!\033[m')
 
 
-def ler_arquivo_Pfisica(entrada):
+def ler_db_Pfisica(entrada):
     contador = 0
     controle_id = dict()
     controle_id['id'] = contador
@@ -48,7 +46,7 @@ def ler_arquivo_Pfisica(entrada):
     except (Error):
         print('\033[0;31mErro ao ler o arquivo\033[m')
     else:
-        interface.pessoas_db()
+        interface.usuarios_db()
         print('DADOS PESSOAS FÍSICAS'.center(50))
         print()
         for linha in ler:
@@ -66,7 +64,7 @@ def ler_arquivo_Pfisica(entrada):
         print()
 
 
-def ler_arquivo_Pjuridica(entrada):
+def ler_db_Pjuridica(entrada):
     contador = 0
     controle_id = dict()
     controle_id['id'] = contador
@@ -75,8 +73,8 @@ def ler_arquivo_Pjuridica(entrada):
     except (Error):
         print('\033[0;31mErro ao ler o arquivo\033[m')
     else:
-        interface.pessoas_db()
-        
+        interface.usuarios_db()
+
         print('DADOS PESSOAS JURÍDICAS'.center(50))
         print()
         for linha in ler:
@@ -96,7 +94,7 @@ def ler_arquivo_Pjuridica(entrada):
         print()
 
 
-def escrever_arquivo_Pfisico(entrada, nome='', cpf='', idade=0, renda=0):
+def escrever_Pfisica(entrada, nome='', cpf='', idade=0, renda=0):
 
     try:
         escrever = open(entrada, 'at+')  # a = append, t = texto, + = adicionar
@@ -114,7 +112,7 @@ def escrever_arquivo_Pfisico(entrada, nome='', cpf='', idade=0, renda=0):
             escrever.close()
 
 
-def escrever_arquivo_Pjuridico(entrada, nome='', cnpj='', porte='', capital=0, fluxo=0, dre=0):
+def escrever_Pjuridica(entrada, nome='', cnpj='', porte='', capital=0, fluxo=0, dre=0):
     try:
         escrever = open(entrada, 'at+')  # a = append, t = texto, + = adicionar
     except (Error):
@@ -122,7 +120,8 @@ def escrever_arquivo_Pjuridico(entrada, nome='', cnpj='', porte='', capital=0, f
     else:
         try:
             escrever.write(f'{nome};{cnpj};{porte};')
-            escrever.write(f'{interface.Real(capital)};{interface.Real(fluxo)};{interface.Real(dre)}\n')
+            escrever.write(
+                f'{interface.Real(capital)};{interface.Real(fluxo)};{interface.Real(dre)}\n')
         except (Error):
             print('\033[0;31mErro na escrita do arquivo\033[m')
         else:
@@ -131,7 +130,7 @@ def escrever_arquivo_Pjuridico(entrada, nome='', cnpj='', porte='', capital=0, f
             escrever.close()
 
 
-def leiaDinheiro(msg):
+def ler_moeda(msg):
     while True:
         valido = False
         while not valido:
@@ -144,5 +143,5 @@ def leiaDinheiro(msg):
                     return float(entrada)
                 except ValueError:
                     print('ERRO, não inserir pontuação no inicio do valor.'
-                        ' Insira na penúltima casa decimal.')
+                          ' Insira na penúltima casa decimal.')
                     continue
