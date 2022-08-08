@@ -15,6 +15,15 @@ Sistema simples **(prompt command)** que cadastra pessoas e a idade, escrito em 
 * Funções
 * Tratamento de erros Try, except, else, Finally
 * Dicionário
+
+**Telas do Programa:**
+
+[Tela principal](https://user-images.githubusercontent.com/109303611/183476531-02f29dea-5e8a-4b7d-888d-41907baaaf25.JPG)
+
+[Tela de Cadastro](https://user-images.githubusercontent.com/109303611/183476540-4c30a0f4-c7ed-406d-87ff-4c5937feefa3.JPG)
+
+[Tela do banco de dados](https://user-images.githubusercontent.com/109303611/183476552-8922fefd-189e-4462-a068-807f6f96cf09.JPG)
+
 ---
 
 ### Resumo versão 1.1:
