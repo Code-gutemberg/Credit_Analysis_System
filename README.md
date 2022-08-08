@@ -84,7 +84,7 @@ ___
 
 Modificar a __*versão 1.1*__ e melhorar o sistema de análise de crédito.
 
-**Projeção para versão 1.1:**
+**Escopo para versão 1.2:**
 
 - [ ] Modificações:
     - [ ] Alterar a moeda de saída para Real Brasileiro ignorando a pontuação padrão do python.
@@ -100,4 +100,3 @@ Modificar a __*versão 1.1*__ e melhorar o sistema de análise de crédito.
         - [ ] 5 para Sair do Sistema.
     - [ ] Definir regras de aprovação de crédito.
     - [ ] Definir regras de pré-aprovação de crédito.
-    
