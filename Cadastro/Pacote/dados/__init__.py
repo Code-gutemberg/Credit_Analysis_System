@@ -1,5 +1,6 @@
 '''FUNÇÕES PARA TESTAR, CRIAR, ABRIR E ALIMENTAR DOIS BANCOS DE DADOS EM TXT'''
 from aifc import Error
+from random import randint
 import interface
 from time import sleep
 
@@ -48,19 +49,17 @@ def ler_db_Pfisica(entrada):
         for linha in ler:
             dado = linha.split(';')
             dado[1] = dado[1].replace('\n', '')
-            print(f'{"Nome: "}{dado[0]}')
-            print(f'{"CPF: "}{dado[1]}')
-            print(f'{"Idade: "}{dado[2]} anos')
-            print(f'{"Renda Líquida: "}{dado[3]}')
+            print(f'{"ID: "}{dado[0]}')
+            print(f'{"Nome: "}{dado[1]}')
+            print(f'{"CPF: "}{dado[2]}')
+            print(f'{"Idade: "}{dado[3]} anos')
+            print(f'{"Renda Líquida: "}{dado[4]}')
             print('=' * 50)
         sleep(2)
         print()
 
 
 def ler_db_Pjuridica(entrada):
-    contador = 0
-    controle_id = dict()
-    controle_id['id'] = contador
     try:
         ler = open(entrada, 'rt')    # r = read e t = texto
     except (Error):
@@ -73,30 +72,28 @@ def ler_db_Pjuridica(entrada):
         for linha in ler:
             dado = linha.split(';')
             dado[1] = dado[1].replace('\n', '')
-            print(f'{"id: "}{contador}')
-            print(f'{"Nome da Empresa: "}{dado[0]}')
-            print(f'{"CNPJ: "}{dado[1]}')
-            print(f'{"Porte: "}{dado[2]}')
-            print(f'{"Capital Imobilizado: "}{dado[3]}')
-            print(f'{"Fluxo de Caixa: "}{dado[4]}')
-            print(f'{"DRE: "}{dado[5]}')
-            contador += 1
-            controle_id['dados'] = dado
+            print(f'{"ID: "}{dado[0]}')
+            print(f'{"Nome da Empresa: "}{dado[1]}')
+            print(f'{"CNPJ: "}{dado[2]}')
+            print(f'{"Porte: "}{dado[3]}')
+            print(f'{"Capital Imobilizado: "}{dado[4]}')
+            print(f'{"Fluxo de Caixa: "}{dado[5]}')
+            print(f'{"DRE: "}{dado[6]}')
             print('=' * 50)
         sleep(2)
         print()
 
 
 def escrever_Pfisica(entrada, nome='', cpf='', idade=0, renda=0):
-
+    id = 0
     try:
         escrever = open(entrada, 'at+')  # a = append, t = texto, + = adicionar
     except (Error):
         print('\033[0;31mErro na abertura do arquivo\033[m')
     else:
         try:
-            escrever.write(
-                f'{nome};{cpf};{idade};{interface.Real(renda)}\n')
+            id = randint(0, 100)
+            escrever.write(f'{id};{nome};{cpf};{idade};{interface.Real(renda)}\n')
         except (Error):
             print('\033[0;31mErro na escrita do arquivo\033[m')
         else:
@@ -106,13 +103,15 @@ def escrever_Pfisica(entrada, nome='', cpf='', idade=0, renda=0):
 
 
 def escrever_Pjuridica(entrada, nome='', cnpj='', porte='', capital=0, fluxo=0, dre=0):
+    id = 0
     try:
         escrever = open(entrada, 'at+')  # a = append, t = texto, + = adicionar
     except (Error):
         print('\033[0;31mErro na abertura do arquivo\033[m')
     else:
         try:
-            escrever.write(f'{nome};{cnpj};{porte};')
+            id = randint(0, 100)
+            escrever.write(f'{id};{nome};{cnpj};{porte};')
             escrever.write(
                 f'{interface.Real(capital)};{interface.Real(fluxo)};{interface.Real(dre)}\n')
         except (Error):
@@ -138,3 +137,4 @@ def ler_moeda(msg):
                     print('ERRO, não inserir pontuação no inicio do valor.'
                           ' Insira na penúltima casa decimal.')
                     continue
+
