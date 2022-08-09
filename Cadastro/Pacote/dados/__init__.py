@@ -37,10 +37,6 @@ def criar_arquivo(entrada):
 
 
 def ler_db_Pfisica(entrada):
-    contador = 0
-    controle_id = dict()
-    controle_id['id'] = contador
-
     try:
         ler = open(entrada, 'rt')    # r = read e t = texto
     except (Error):
@@ -52,13 +48,10 @@ def ler_db_Pfisica(entrada):
         for linha in ler:
             dado = linha.split(';')
             dado[1] = dado[1].replace('\n', '')
-            print(f'{"id: "}{contador}')
             print(f'{"Nome: "}{dado[0]}')
             print(f'{"CPF: "}{dado[1]}')
             print(f'{"Idade: "}{dado[2]} anos')
             print(f'{"Renda Líquida: "}{dado[3]}')
-            contador += 1
-            controle_id['dados'] = dado
             print('=' * 50)
         sleep(2)
         print()

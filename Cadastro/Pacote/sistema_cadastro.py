@@ -45,7 +45,8 @@ while True:
                         print(f'\033[31m ERRO, máximo caracteres [14] \033[m')
                     else:
                         idade = interface.LeiaInt('Idade: ')
-                        renda = dados.ler_moeda('Renda Liquida: R$ ')
+                        r2
+                        enda = dados.ler_moeda('Renda Liquida: R$ ')
                         break
             dados.escrever_Pfisica(arquivo_Pfisica, nome, cpf, idade, renda)  # type: ignore
         elif usuario == 2:

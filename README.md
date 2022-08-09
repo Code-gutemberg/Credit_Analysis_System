@@ -88,7 +88,7 @@ Modificar a __*versão 1.1*__ e melhorar o sistema de análise de crédito.
 
 - [x] Modificações:
     - [x] Alterar a moeda de saída para Real Brasileiro ignorando a pontuação padrão do python.
-    - [x] Vincular o ID de usuários cadastrados à um dicionário padrão para consulta futura.
+    - [ ] Vincular o ID de usuários cadastrados à um dicionário padrão para consulta futura.
     - [x] Alterar o nome do menu Cadastrar para Cadastrar Usuário.
     - [x] Alterar o nome do menu Banco de Dados para Consultar Usuário.
     - [x] Criar um menu para remover usuários cadastrados.

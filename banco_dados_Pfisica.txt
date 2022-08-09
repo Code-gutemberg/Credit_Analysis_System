@@ -1,1 +1,3 @@
 Alex Gutemberg de Jesus da Paixao;000.000.000-78;29;1000
+AAAA;054.666.666-22;22;R$ 0,00
+BBB;000.000.000-01;55;R$ 0,00
