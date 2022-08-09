@@ -20,8 +20,11 @@ while True:
         interface.titulo('[$] ANÁLISE DE PROPOSTA DE CRÉDITO!')
         interface.submenu()
         usuario = interface.LeiaInt('Digite o código correspondente: ')
-        sleep(1)
-        break        
+        if usuario == 1:
+            credito = dados.ler_moeda('Digite o valor do crédito: ')
+            
+            sleep(1)
+            break        
     elif usuario == 2:
         interface.titulo('[+] NOVO CADASTRO')
         interface.submenu()

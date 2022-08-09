@@ -137,4 +137,3 @@ def ler_moeda(msg):
                     print('ERRO, não inserir pontuação no inicio do valor.'
                           ' Insira na penúltima casa decimal.')
                     continue
-
