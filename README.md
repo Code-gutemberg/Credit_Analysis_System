@@ -115,3 +115,17 @@ Modificar a __*versão 1.1*__ e melhorar o sistema de análise de crédito.
 
 **Telas do Programa:**
 
+[Tela Principal](https://user-images.githubusercontent.com/109303611/183923377-df639a48-7412-4868-ad3a-cb071c113737.JPG)
+
+[Tela Proposta de Crédito](https://user-images.githubusercontent.com/109303611/183923474-acabc12a-b057-4951-9d29-c95e50639949.JPG)
+
+[Tela Consulta de usuario dentro de Proposta de Crédito](https://user-images.githubusercontent.com/109303611/183923625-bc3c4db1-568d-4aa5-ad1d-52ca91cf2f26.JPG)
+
+[Tela de Remover Usuário](https://user-images.githubusercontent.com/109303611/183923752-3098e190-ffbb-43cf-9b05-5c82d5ef4dd7.JPG)
+
+[Tela Consulta de usuario dentro de Remover Usuario](https://user-images.githubusercontent.com/109303611/183923845-93024dab-c60a-4044-9266-8213af62fe01.JPG)
+
+
+
+
+
