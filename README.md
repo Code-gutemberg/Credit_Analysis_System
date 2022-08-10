@@ -125,7 +125,30 @@ Modificar a __*versão 1.1*__ e melhorar o sistema de análise de crédito.
 
 [Tela Consulta de usuario dentro de Remover Usuario](https://user-images.githubusercontent.com/109303611/183923845-93024dab-c60a-4044-9266-8213af62fe01.JPG)
 
+___
 
+### Resumo versão 1.3:
+
+Modificar a __*versão 1.2*__ e criar funções QUERY de dados dos bancos.txt.
+
+**Escopo para versão 1.3:**
+
+- [ ] Modificações:
+    - [ ] Criar função para questionar os dados dos bancos.
+    - [ ] Modificar menu Proposta de Crédito.
+        - [ ] Criar sistemática de consulta por CPF.
+        - [ ] Caso CPF inexistente: iniciar cadastro de usuário.
+        - [ ] Caso CPF existente: iniciar análise de proposta.
+            - [ ] Criar regras de proposta de crédito.
+    - [ ] Modificar menu Cadastrar Usuário.
+        - [ ] Criar sistemática de consulta por CPF.
+        - [ ] Caso CPF inexistente: iniciar cadastro de usuário. 
+        - [ ] Caso CPF existente: informar que já existe.
+    - [ ] Modificar menu Remover Usuário.
+        - [ ] Criar sistemática de consulta por CPF.
+        - [ ] Caso CPF inexistente: informar que usuário não existe. 
+        - [ ] Caso CPF existente: informar mensagem de confirmação.
+            - [ ] Caso resposta sim: remover usuario do banco de dados.
 
 
 
