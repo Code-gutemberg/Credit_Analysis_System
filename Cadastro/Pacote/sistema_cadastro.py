@@ -22,10 +22,16 @@ while True:
         while True:
             usuario = interface.LeiaInt('Digite o código correspondente: ')
             if usuario == 1:
-                dados.ler_db_Pfisica(arquivo_Pfisica)
+                cpf = 'Digite o CPF: '
+                resposta_Pfisica = False
+                if dados.query_Pfisica(arquivo_Pfisica, cpf, resposta_Pfisica) == False:
+                    print('CPF não existe')
                 break
             elif usuario == 2:
-                dados.ler_db_Pjuridica(arquivo_Pjuridica)
+                cnpj = 'Digite o CNPJ: '
+                resposta_Pjuridica = False
+                if dados.query_Pjuridica(arquivo_Pjuridica, cnpj, resposta_Pjuridica) == False:
+                    print('CNPJ não existe')
                 break
             else:
                 interface.erro_codigo()

@@ -133,10 +133,10 @@ Modificar a __*versão 1.2*__ e criar funções QUERY de dados dos bancos.txt.
 
 **Escopo para versão 1.3:**
 
-- [ ] Modificações:
-    - [ ] Criar função para questionar os dados dos bancos.
-    - [ ] Modificar menu Proposta de Crédito.
-        - [ ] Criar sistemática de consulta por CPF.
+- [x] Modificações:
+    - [x] Criar função para questionar os dados dos bancos.
+    - [x] Modificar menu Proposta de Crédito.
+        - [x] Criar sistemática de consulta por CPF.
         - [ ] Caso CPF inexistente: iniciar cadastro de usuário.
         - [ ] Caso CPF existente: iniciar análise de proposta.
             - [ ] Criar regras de proposta de crédito.
