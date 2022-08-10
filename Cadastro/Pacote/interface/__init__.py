@@ -31,8 +31,7 @@ def subtitulo():
     menu[1] = 'Proposta de Crédito [ $ ]'
     menu[2] = 'Cadastrar Usuário \t[ + ]'
     menu[3] = 'Remover Usuário \t[DEL]'
-    menu[4] = 'Consultar Usuário \t[ = ]'
-    menu[5] = 'Sair do Sistema \t[ ! ]'
+    menu[4] = 'Sair do Sistema \t[ ! ]'
     for k, v in menu.items():
         print(f'{k} - {v}')
     print('=' * 50)

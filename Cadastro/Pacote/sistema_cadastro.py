@@ -17,14 +17,20 @@ while True:
     interface.subtitulo()       # Chama as opções do programa
     usuario = interface.LeiaInt('Digite o código correspondente: ')
     if usuario == 1:
-        interface.titulo('[$] ANÁLISE DE PROPOSTA DE CRÉDITO!')
+        interface.titulo('[$] ANÁLISE DE PROPOSTA DE CRÉDITO')
         interface.submenu()
-        usuario = interface.LeiaInt('Digite o código correspondente: ')
-        if usuario == 1:
-            credito = dados.ler_moeda('Digite o valor do crédito: ')
-            
-            sleep(1)
-            break        
+        while True:
+            usuario = interface.LeiaInt('Digite o código correspondente: ')
+            if usuario == 1:
+                dados.ler_db_Pfisica(arquivo_Pfisica)
+                break
+            elif usuario == 2:
+                dados.ler_db_Pjuridica(arquivo_Pjuridica)
+                break
+            else:
+                interface.erro_codigo()
+        sleep(1)
+        break        
     elif usuario == 2:
         interface.titulo('[+] NOVO CADASTRO')
         interface.submenu()
@@ -83,8 +89,7 @@ while True:
             dados.escrever_Pjuridica(arquivo_Pjuridica, nome, cnpj, porte,
                                             capital, soma_fluxo, dre)  # type: ignore
     elif usuario == 3:
-        break
-    elif usuario == 4:
+        interface.titulo('[DEL] REMOVER USUÁRIO')
         interface.submenu()
         while True:
             usuario = interface.LeiaInt('Digite o código correspondente: ')
@@ -96,7 +101,9 @@ while True:
                 break
             else:
                 interface.erro_codigo()
-    elif usuario == 5:
+        sleep(1)
+        break
+    elif usuario == 4:
         interface.titulo('[!] PROGRAMA ENCERRADO COM SUCESSO!')
         sleep(1)
         break
