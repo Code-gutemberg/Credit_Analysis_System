@@ -145,12 +145,22 @@ def query_Pfisica(db_Pfisica, consulta, saida=False):
     except (Error):
         print('\033[0;31mErro ao ler o arquivo\033[m')
     else:
-        cpf = str(input(consulta))
+        while True:
+            cpf = str(input(consulta))
+            if '.' not in cpf:
+                print(f'\033[31m ERRO, insira pontuações \033[m')
+            elif '-' not in cpf:
+                print(f'\033[31m ERRO, insira o hífen \033[m')
+            elif len(cpf) < 14 and '.-' not in cpf:
+                print(f'\033[31m ERRO, mínimo caracteres [14] \033[m')
+            elif len(cpf) > 14:
+                print(f'\033[31m ERRO, máximo caracteres [14] \033[m')
+            else:
+                break
         for linha in ler:
             dado = linha.split(';')
             dado[1] = dado[1].replace('\n', '')
-            if cpf == dado[2]:
-                saida = True
+            if cpf in dado:
                 interface.usuarios_db()
                 print('DADOS DO USUÁRIO'.center(50))
                 print()
@@ -160,10 +170,10 @@ def query_Pfisica(db_Pfisica, consulta, saida=False):
                 print(f'{"Idade: "}{dado[3]} anos')
                 print(f'{"Renda Líquida: "}{dado[4]}')
                 print('=' * 50)
+                saida = True
                 return saida
-            else:
-                saida = False
-                return saida
+        return False
+
 
 def query_Pjuridica(db_Pjrudica, consulta, saida=False):
     try:
@@ -171,7 +181,20 @@ def query_Pjuridica(db_Pjrudica, consulta, saida=False):
     except (Error):
         print('\033[0;31mErro ao ler o arquivo\033[m')
     else:
-        cnpj = str(input(consulta))
+        while True:
+            cnpj = str(input(consulta))
+            if '.' not in cnpj:
+                print(f'\033[31m ERRO, insira pontuações \033[m')
+            elif '/' not in cnpj:
+                print(f'\033[31m ERRO, insira a barra \033[m')
+            elif '-' not in cnpj:
+                print(f'\033[31m ERRO, insira o hífen \033[m')
+            elif len(cnpj) < 18 and '.-' not in cnpj:
+                print(f'\033[31m ERRO, mínimo caracteres [14] \033[m')
+            elif len(cnpj) > 18:
+                print(f'\033[31m ERRO, máximo caracteres [14] \033[m')
+            else:
+                break
         for linha in ler:
             dado = linha.split(';')
             dado[1] = dado[1].replace('\n', '')
@@ -189,6 +212,5 @@ def query_Pjuridica(db_Pjrudica, consulta, saida=False):
                 print(f'{"DRE: "}{dado[6]}')
                 print('=' * 50)
                 return saida
-            else:
-                saida = False
-                return saida
+        return False
+            
