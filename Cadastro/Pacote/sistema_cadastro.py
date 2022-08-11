@@ -257,37 +257,57 @@ while True:
         while True:
             usuario = interface.LeiaInt('Digite o código correspondente: ')
             if usuario == 1:    # SUBMENU pessoa física
+                os.system('cls')
                 interface.titulo('[DEL] REMOVER USUÁRIO')
                 interface.titulo('[=] CONSULTA PESSOA FÍSICA NO BANCO DE DADOS')
                 cpf = 'Digite o CPF: '
                 resposta_Pfisica = False
                 if dados.query_Pfisica(arquivo_Pfisica, cpf, resposta_Pfisica) == False:
-                    interface.titulo('[DEL] REMOVER USUÁRIO')
-                    interface.titulo('[=] CONSULTA PESSOA FÍSICA NO BANCO DE DADOS')
                     interface.titulo(f'USUÁRIO NÃO CADASTRADO')
+                    sleep(2)
+                    os.system('cls')
+                    break1
+                    
+                else:
+                    while True:
+                        usuario = str(input('Deseja excluir esse usuário? [S/N]: ')).upper()[0]
+                        if usuario in 'S':
+                            sleep(2)
+                            break
+                        elif usuario in 'N':
+                            os.system('cls')
+                            break
+                        else:
+                            print('\033[31mERRO, digite SIM ou NÃO \033[m')
+                    if usuario in 'NS':
+                        os.system('cls')
+                        break
+                
+            elif usuario == 2:  # SUBMENU pessoa jurídica
+                os.system('cls')
+                interface.titulo('[DEL] REMOVER USUÁRIO')
+                interface.titulo('[=] CONSULTA PESSOA JURÍDICA NO BANCO DE DADOS')
+                cnpj = 'Digite o CNPJ: '
+                resposta_Pjuridica = False
+                if dados.query_Pjuridica(arquivo_Pjuridica, cnpj, resposta_Pjuridica) == False:
+                    interface.titulo(f'EMPRESA NÃO CADASTRADA')
                     sleep(2)
                     os.system('cls')
                     break
                 else:
                     while True:
-                        usuario = str(input('Deseja excluir esse usuário? [S/N]: ')).upper()[0]
+                        usuario = str(input('Deseja excluir essa empresa? [S/N]: ')).upper()[0]
                         if usuario in 'S':
-                            print()
+                            sleep(2)
+                            break
                         elif usuario in 'N':
+                            os.system('cls')
                             break
                         else:
                             print('\033[31mERRO, digite SIM ou NÃO \033[m')
-                    if usuario in 'N':
-                        sleep(1)
+                    if usuario in 'NS':
+                        os.system('cls')
                         break
-                
-            elif usuario == 2:  # SUBMENU pessoa jurídica
-                interface.titulo('[=] CONSULTA DE CNPJ NO BANCO DE DADOS')
-                break
-            else:
-                interface.erro_codigo()
-                sleep(1)
-                break
     
     elif usuario == 4:      # Menu Sair do Programa
         interface.titulo('[!] PROGRAMA ENCERRADO COM SUCESSO!')
