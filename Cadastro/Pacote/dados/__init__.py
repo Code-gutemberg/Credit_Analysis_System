@@ -3,6 +3,8 @@ from aifc import Error
 from random import randint
 import interface
 from time import sleep
+import os
+
 
 def arquivo_existe(banco_dados):
     """Descrição
@@ -35,53 +37,6 @@ def criar_arquivo(banco_dados):
         print('\033[0;31mHouve um erro na criação do arquivo!\033[m')
     else:
         print(f'\033[0;31mAquivo {banco_dados} criado com sucesso!\033[m')
-
-
-def ler_db_Pfisica(db_Pfisica):
-    try:
-        ler = open(db_Pfisica, 'rt')    # r = read e t = texto
-    except (Error):
-        print('\033[0;31mErro ao ler o arquivo\033[m')
-    else:
-        interface.usuarios_db()
-        print('DADOS PESSOAS FÍSICAS'.center(50))
-        print()
-        for linha in ler:
-            dado = linha.split(';')
-            dado[1] = dado[1].replace('\n', '')
-            print(f'{"ID: "}{dado[0]}')
-            print(f'{"Nome: "}{dado[1]}')
-            print(f'{"CPF: "}{dado[2]}')
-            print(f'{"Idade: "}{dado[3]} anos')
-            print(f'{"Renda Líquida: "}{dado[4]}')
-            print('=' * 50)
-        sleep(2)
-        print()
-
-
-def ler_db_Pjuridica(db_Pjuridica):
-    try:
-        ler = open(db_Pjuridica, 'rt')    # r = read e t = texto
-    except (Error):
-        print('\033[0;31mErro ao ler o arquivo\033[m')
-    else:
-        interface.usuarios_db()
-
-        print('DADOS PESSOAS JURÍDICAS'.center(50))
-        print()
-        for linha in ler:
-            dado = linha.split(';')
-            dado[1] = dado[1].replace('\n', '')
-            print(f'{"ID: "}{dado[0]}')
-            print(f'{"Nome da Empresa: "}{dado[1]}')
-            print(f'{"CNPJ: "}{dado[2]}')
-            print(f'{"Porte: "}{dado[3]}')
-            print(f'{"Capital Imobilizado: "}{dado[4]}')
-            print(f'{"Fluxo de Caixa: "}{dado[5]}')
-            print(f'{"DRE: "}{dado[6]}')
-            print('=' * 50)
-        sleep(2)
-        print()
 
 
 def escrever_Pfisica(db_Pfisica, nome='', cpf='', idade=0, renda=0):
@@ -147,6 +102,7 @@ def query_Pfisica(db_Pfisica, consulta, saida=False):
     else:
         while True:
             cpf = str(input(consulta))
+            os.system('cls')
             if '.' not in cpf:
                 print(f'\033[31m ERRO, insira pontuações \033[m')
             elif '-' not in cpf:
@@ -161,7 +117,8 @@ def query_Pfisica(db_Pfisica, consulta, saida=False):
             dado = linha.split(';')
             dado[1] = dado[1].replace('\n', '')
             if cpf in dado:
-                interface.usuarios_db()
+                interface.titulo('[$] ANÁLISE DE PROPOSTA DE CRÉDITO')
+                interface.titulo('[=] CONSULTA DE PESSOA FÍSICA NO BANCO DE DADOS')
                 print('DADOS DO USUÁRIO'.center(50))
                 print()
                 print(f'{"ID: "}{dado[0]}')
@@ -183,6 +140,7 @@ def query_Pjuridica(db_Pjrudica, consulta, saida=False):
     else:
         while True:
             cnpj = str(input(consulta))
+            os.system('cls')
             if '.' not in cnpj:
                 print(f'\033[31m ERRO, insira pontuações \033[m')
             elif '/' not in cnpj:
@@ -198,9 +156,9 @@ def query_Pjuridica(db_Pjrudica, consulta, saida=False):
         for linha in ler:
             dado = linha.split(';')
             dado[1] = dado[1].replace('\n', '')
-            if cnpj == dado[2]:
-                saida = True
-                interface.usuarios_db()
+            if cnpj in dado:
+                interface.titulo('[$] ANÁLISE DE PROPOSTA DE CRÉDITO')
+                interface.titulo('[=] CONSULTA DE PESSOA JURÍDICA NO BANCO DE DADOS')
                 print('DADOS DA EMPRESA'.center(50))
                 print()
                 print(f'{"ID: "}{dado[0]}')
@@ -211,6 +169,7 @@ def query_Pjuridica(db_Pjrudica, consulta, saida=False):
                 print(f'{"Fluxo de Caixa: "}{dado[5]}')
                 print(f'{"DRE: "}{dado[6]}')
                 print('=' * 50)
+                saida = True
                 return saida
         return False
             

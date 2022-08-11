@@ -129,7 +129,7 @@ ___
 
 ### Resumo versão 1.3:
 
-Modificar a __*versão 1.2*__ e criar funções QUERY de dados dos bancos.txt.
+Modificar a __*versão 1.2*__ e criar funções QUERY de dados dos bancos.txt a partir da função ler_db.
 
 **Escopo para versão 1.3:**
 
@@ -156,6 +156,8 @@ Modificar a __*versão 1.2*__ e criar funções QUERY de dados dos bancos.txt.
         - [ ] Caso CPF inexistente: informar que usuário não existe. 
         - [ ] Caso CPF existente: informar mensagem de confirmação.
             - [ ] Caso resposta sim: remover usuario do banco de dados.
-
-
+        - [ ] Criar sistemática de consulta por CNPJ.
+        - [ ] Caso CNPJ inexistente: informar que a empresa não existe. 
+        - [ ] Caso CNPJ existente: informar mensagem de confirmação.
+            - [ ] Caso resposta sim: remover usuario do banco de dados.
 

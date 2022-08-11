@@ -2,6 +2,7 @@
 from time import sleep
 import interface
 import dados
+import os
 
 arquivo_Pfisica = 'banco_dados_Pfisica.txt' # Define o nome do banco de dados Pessoa Fisica
 arquivo_Pjuridica = 'banco_dados_Pjuridica.txt' # Define o nome do banco de dados Pessoa Juridica
@@ -13,24 +14,30 @@ if not dados.arquivo_existe(arquivo_Pjuridica): # Se não existir o db_Pjuridica
 
 while True:
     interface.titulo('SISTEMA DE ANÁLISE DE CRÉDITO')   # MENU Principal
-    interface.titulo('[#] MENU PRINCIPAL')              # MENU Principal
     interface.subtitulo()                               # MENU Principal
     usuario = interface.LeiaInt('Digite o código correspondente: ')
-    
     if usuario == 1:        # MENU Análise de Proposta de Crédito
+        os.system('cls')
         interface.titulo('[$] ANÁLISE DE PROPOSTA DE CRÉDITO')
-        interface.submenu()
+        interface.submenu() # Opção PJ/PF
         while True:
             usuario = interface.LeiaInt('Digite o código correspondente: ')
             if usuario == 1:        # SUBMENU Pessoa Física
+                os.system('cls')
+                interface.titulo('[$] ANÁLISE DE PROPOSTA DE CRÉDITO')
+                interface.titulo('[=] CONSULTA DE PESSOA FÍSICA NO BANCO DE DADOS')
                 cpf = 'Digite o CPF: '
                 resposta_Pfisica = False
                 if dados.query_Pfisica(arquivo_Pfisica, cpf, resposta_Pfisica) == False:
-                    print('CPF não existe')
+                    interface.titulo('[$] ANÁLISE DE PROPOSTA DE CRÉDITO')
+                    interface.titulo('[=] CONSULTA DE PESSOA FÍSICA NO BANCO DE DADOS')
+                    interface.titulo(f'USUÁRIO NÃO CADASTRADO')
                     while True:
                         usuario = str(input('Deseja Cadastrar um Novo usuário [S/N]: ')).upper()[0]
                         if usuario in 'S':
-                            interface.titulo('[+] NOVO CADASTRO')
+                            os.system('cls')
+                            interface.titulo('[+] CADASTRAR USUÁRIO')
+                            interface.titulo('[+] NOVO CADASTRO DE USUÁRIO')
                             while True:
                                 nome = str(input('Nome: '))
                                 if len(nome) > 40:
@@ -53,24 +60,34 @@ while True:
                                         break
                             dados.escrever_Pfisica(arquivo_Pfisica, nome, cpf, idade, renda)  # type: ignore
                         elif usuario in 'N':
+                            os.system('cls')
                             break
                         else:
                             print('\033[31mERRO, digite SIM ou NÃO \033[m')
                     if usuario in 'N':
-                        interface.titulo('[!] PROGRAMA ENCERRADO COM SUCESSO!')
-                        sleep(1)
+                        os.system('cls')
                         break
                 else:
+                    excluir = input()
+                    os.system('cls')
                     break # colocar as opções de análise de crédito
                 
             elif usuario == 2:      # SUBMENU Pessoa Jurídica
+                os.system('cls')
+                interface.titulo('[$] ANÁLISE DE PROPOSTA DE CRÉDITO')
+                interface.titulo('[=] CONSULTA DE PESSOA JURÍDICA NO BANCO DE DADOS')
                 cnpj = 'Digite o CNPJ: '
                 resposta_Pjuridica = False
                 if dados.query_Pjuridica(arquivo_Pjuridica, cnpj, resposta_Pjuridica) == False:
-                    print('CNPJ não existe')
+                    interface.titulo('[$] ANÁLISE DE PROPOSTA DE CRÉDITO')
+                    interface.titulo('[=] CONSULTA DE PESSOA JURÍDICA NO BANCO DE DADOS')
+                    interface.titulo(f'EMPRESA NÃO CADASTRADA')
                     while True:
                         usuario = str(input('Deseja Cadastrar uma Nova empresa [S/N]: ')).upper()[0]
                         if usuario in 'S':
+                            os.system('cls')
+                            interface.titulo('[+] CADASTRAR USUÁRIO')
+                            interface.titulo('[+] NOVO CADASTRO DE EMPRESA')
                             fluxo = list()
                             while True:
                                 nome = str(input('Nome da Empresa: '))
@@ -99,40 +116,48 @@ while True:
                                         dre = dados.ler_moeda('Demonstração de Resultado do Exercício: R$ ')
                                         soma_fluxo = sum(fluxo)
                                         break
-                            dados.escrever_Pjuridica(arquivo_Pjuridica, nome, cnpj, porte,
-                                                            capital, soma_fluxo, dre)  # type: ignore
+                            dados.escrever_Pjuridica(arquivo_Pjuridica, nome, cnpj, porte, capital, soma_fluxo, dre)  # type: ignore
                         elif usuario in 'N':
+                            os.system('cls')
                             break
                         else:
                             print('\033[31mERRO, digite SIM ou NÃO \033[m')
                     if usuario in 'N':
-                        interface.titulo('[!] PROGRAMA ENCERRADO COM SUCESSO!')
-                        sleep(1)
+                        os.system('cls')
                         break
                 else:
-                    break
-            else:
-                interface.erro_codigo()
-        sleep(1)
-        break
+                    excluir = input()
+                    os.system('cls')
+                    break # colocar as opções de análise de crédito
+
     
     elif usuario == 2:      # MENU Cadastro de Usuário
-        interface.titulo('[+] NOVO CADASTRO')
+        os.system('cls')
+        interface.titulo('[+] CADASTRAR USUÁRIO')
         interface.submenu()
         usuario = interface.LeiaInt('Digite o código correspondente: ')
         if usuario == 1:    # SUBMENU Pessoa física
-            interface.titulo('[=] CONSULTA DE CPF NO BANCO DE DADOS')
+            os.system('cls')
+            interface.titulo('[+] CADASTRAR USUÁRIO')
+            interface.titulo('[=] CONSULTA DE PESSOA FÍSICA NO BANCO DE DADOS')
             cpf = 'Digite o CPF: '
             resposta_Pfisica = False
             if dados.query_Pfisica_cadastro(arquivo_Pfisica, cpf, resposta_Pfisica) == True:
                 interface.titulo(f'JÁ EXISTE CADASTRO DO USUÁRIO')
                 sleep(2)
+                enter = input()
+                os.system('cls')
             else:
+                os.system('cls')
+                interface.titulo('[+] CADASTRAR USUÁRIO')
+                interface.titulo('[=] CONSULTA DE PESSOA FÍSICA NO BANCO DE DADOS')
                 interface.titulo(f'USUÁRIO NÃO CADASTRADO')
                 while True:
                     usuario = str(input('Deseja Cadastrar um Novo usuário [S/N]: ')).upper()[0]
                     if usuario in 'S':
-                        interface.titulo('[+] NOVO CADASTRO')
+                        os.system('cls')
+                        interface.titulo('[+] CADASTRAR USUÁRIO')
+                        interface.titulo('[+] NOVO CADASTRO DE USUÁRIO')
                         while True:
                             nome = str(input('Nome: '))
                             if len(nome) > 40:
@@ -155,28 +180,38 @@ while True:
                                     break
                         dados.escrever_Pfisica(arquivo_Pfisica, nome, cpf, idade, renda)  # type: ignore
                     elif usuario in 'N':
+                        os.system('cls')
                         break
                     else:
                         print('\033[31mERRO, digite SIM ou NÃO \033[m')
                 if usuario in 'N':
-                    interface.titulo('[!] PROGRAMA ENCERRADO COM SUCESSO!')
-                    sleep(1)
-                    break
+                    os.system('cls')
+                    continue
             
         elif usuario == 2:      # SUBMENU Pessoa Jurídica
-            interface.titulo('[=] CONSULTA DE CNPJ NO BANCO DE DADOS')
+            os.system('cls')
+            interface.titulo('[+] CADASTRAR USUÁRIO')
+            interface.titulo('[=] CONSULTA DE PESSOA JURÍDICA NO BANCO DE DADOS')
             cnpj = 'Digite o CNPJ: '
             resposta_Pjuridica = False
             if dados.query_Pjuridica_cadastro(arquivo_Pjuridica, cnpj, resposta_Pjuridica) == True:
                 interface.titulo(f'JÁ EXISTE CADASTRO DA EMPRESA')
                 sleep(2)
+                enter = input()
+                os.system('cls')
             else:
+                os.system('cls')
+                interface.titulo('[+] CADASTRAR USUÁRIO')
+                interface.titulo('[=] CONSULTA DE PESSOA JURÍDICA NO BANCO DE DADOS')
                 interface.titulo(f'EMPRESA NÃO CADASTRADA')
                 while True:
                     usuario = str(input('Deseja Cadastrar uma Nova empresa? [S/N]: ')).upper()[0]
                     if usuario in 'S':
+                        os.system('cls')
                         fluxo = list()
                         while True:
+                            interface.titulo('[+] CADASTRAR USUÁRIO')
+                            interface.titulo('[+] NOVO CADASTRO DE EMPRESA')
                             nome = str(input('Nome da Empresa: '))
                             if len(nome) > 40:
                                 print(f'\033[31m ERRO, máximo caracteres [40] \033[m')
@@ -206,33 +241,58 @@ while True:
                         dados.escrever_Pjuridica(arquivo_Pjuridica, nome, cnpj, porte,
                                                         capital, soma_fluxo, dre)  # type: ignore
                     elif usuario in 'N':
+                        os.system('cls')
                         break
                     else:
                         print('\033[31mERRO, digite SIM ou NÃO \033[m')
                 if usuario in 'N':
-                    interface.titulo('[!] PROGRAMA ENCERRADO COM SUCESSO!')
-                    sleep(1)
-                    break
+                    sleep(2)
+                    os.system('cls')
+                    continue
     
     elif usuario == 3:      # MENU Remover Usuário
+        os.system('cls')
         interface.titulo('[DEL] REMOVER USUÁRIO')
         interface.submenu()
         while True:
             usuario = interface.LeiaInt('Digite o código correspondente: ')
             if usuario == 1:    # SUBMENU pessoa física
-                dados.ler_db_Pfisica(arquivo_Pfisica)
-                break
+                interface.titulo('[DEL] REMOVER USUÁRIO')
+                interface.titulo('[=] CONSULTA PESSOA FÍSICA NO BANCO DE DADOS')
+                cpf = 'Digite o CPF: '
+                resposta_Pfisica = False
+                if dados.query_Pfisica(arquivo_Pfisica, cpf, resposta_Pfisica) == False:
+                    interface.titulo('[DEL] REMOVER USUÁRIO')
+                    interface.titulo('[=] CONSULTA PESSOA FÍSICA NO BANCO DE DADOS')
+                    interface.titulo(f'USUÁRIO NÃO CADASTRADO')
+                    sleep(2)
+                    os.system('cls')
+                    break
+                else:
+                    while True:
+                        usuario = str(input('Deseja excluir esse usuário? [S/N]: ')).upper()[0]
+                        if usuario in 'S':
+                            print()
+                        elif usuario in 'N':
+                            break
+                        else:
+                            print('\033[31mERRO, digite SIM ou NÃO \033[m')
+                    if usuario in 'N':
+                        sleep(1)
+                        break
+                
             elif usuario == 2:  # SUBMENU pessoa jurídica
-                dados.ler_db_Pjuridica(arquivo_Pjuridica)
+                interface.titulo('[=] CONSULTA DE CNPJ NO BANCO DE DADOS')
                 break
             else:
                 interface.erro_codigo()
-        sleep(1)
-        break
+                sleep(1)
+                break
     
     elif usuario == 4:      # Menu Sair do Programa
         interface.titulo('[!] PROGRAMA ENCERRADO COM SUCESSO!')
-        sleep(1)
+        sleep(2)
+        os.system('cls')
         break
     
     else:
