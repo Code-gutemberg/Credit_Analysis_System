@@ -1,5 +1,6 @@
 '''FUNÇÕES PARA TESTAR, CRIAR, ABRIR E ALIMENTAR DOIS BANCOS DE DADOS EM TXT'''
 from aifc import Error
+from asyncore import write
 from random import randint
 import interface
 from time import sleep
@@ -227,9 +228,9 @@ def query_Pjuridica_cadastro(db_Pjrudica, consulta, saida=False):
         return False
 
 
-def query_Pfisica_excluir(db_Pfisica, consulta, saida=False):
+def DML_Pfisica_excluir(db_Pfisica, consulta, saida=False):
     try:
-        ler = open(db_Pfisica, 'rt')    # r = read e t = texto
+        ler = open(db_Pfisica, 'w')    # r = read e t = texto
     except (Error):
         print('\033[0;31mErro ao ler o arquivo\033[m')
     else:
@@ -245,24 +246,9 @@ def query_Pfisica_excluir(db_Pfisica, consulta, saida=False):
                 print(f'\033[31m ERRO, máximo caracteres [14] \033[m')
             else:
                 break
-        for linha in ler:
-            dado = linha.split(';')
-            dado[1] = dado[1].replace('\n', '')
-            if cpf in dado:
-                os.system('cls')
-                interface.titulo('[DEL] REMOVER USUÁRIO')
-                interface.titulo('[=] CONSULTA DE PESSOA FÍSICA NO BANCO DE DADOS')
-                print('DADOS DO USUÁRIO'.center(50))
-                print()
-                print(f'{"ID: "}{dado[0]}')
-                print(f'{"Nome: "}{dado[1]}')
-                print(f'{"CPF: "}{dado[2]}')
-                print(f'{"Idade: "}{dado[3]} anos')
-                print(f'{"Renda Líquida: "}{dado[4]}')
-                print('=' * 50)
-                saida = True
-                return saida
-        return False
+        ler.write('\n')
+        ler.close()
+
     
 
 def query_Pjuridica_excluir(db_Pjrudica, consulta, saida=False):

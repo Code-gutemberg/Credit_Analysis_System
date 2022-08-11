@@ -266,12 +266,12 @@ while True:
                     interface.titulo(f'USUÁRIO NÃO CADASTRADO')
                     sleep(2)
                     os.system('cls')
-                    break1
-                    
+                    break
                 else:
                     while True:
                         usuario = str(input('Deseja excluir esse usuário? [S/N]: ')).upper()[0]
                         if usuario in 'S':
+                            dados.DML_Pfisica_excluir
                             sleep(2)
                             break
                         elif usuario in 'N':
