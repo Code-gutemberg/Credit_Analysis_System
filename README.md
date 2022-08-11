@@ -144,10 +144,13 @@ Modificar a __*versão 1.2*__ e criar funções QUERY de dados dos bancos.txt.
         - [x] Caso CNPJ inexistente: iniciar cadastro de empresa.
         - [ ] Caso CNPJ existente: iniciar análise de proposta.
             - [ ] Criar regras de proposta de crédito.
-    - [ ] Modificar menu Cadastrar Usuário.
-        - [ ] Criar sistemática de consulta por CPF.
-        - [ ] Caso CPF inexistente: iniciar cadastro de usuário. 
-        - [ ] Caso CPF existente: informar que já existe.
+    - [x] Modificar menu Cadastrar Usuário.
+        - [x] Criar sistemática de consulta por CPF.
+        - [x] Caso CPF inexistente: iniciar cadastro de usuário. 
+        - [x] Caso CPF existente: informar que já existe.
+        - [x] Criar sistemática de consulta por CNPJ.
+        - [x] Caso CNPJ inexistente: iniciar cadastro da empresa. 
+        - [x] Caso CNPJ existente: informar que já existe.
     - [ ] Modificar menu Remover Usuário.
         - [ ] Criar sistemática de consulta por CPF.
         - [ ] Caso CPF inexistente: informar que usuário não existe. 

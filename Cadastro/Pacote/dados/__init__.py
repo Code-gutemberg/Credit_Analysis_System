@@ -214,3 +214,59 @@ def query_Pjuridica(db_Pjrudica, consulta, saida=False):
                 return saida
         return False
             
+
+def query_Pfisica_cadastro(db_Pfisica, consulta, saida=False):
+    try:
+        ler = open(db_Pfisica, 'rt')    # r = read e t = texto
+    except (Error):
+        print('\033[0;31mErro ao ler o arquivo\033[m')
+    else:
+        while True:
+            cpf = str(input(consulta))
+            if '.' not in cpf:
+                print(f'\033[31m ERRO, insira pontuações \033[m')
+            elif '-' not in cpf:
+                print(f'\033[31m ERRO, insira o hífen \033[m')
+            elif len(cpf) < 14 and '.-' not in cpf:
+                print(f'\033[31m ERRO, mínimo caracteres [14] \033[m')
+            elif len(cpf) > 14:
+                print(f'\033[31m ERRO, máximo caracteres [14] \033[m')
+            else:
+                break
+        for linha in ler:
+            dado = linha.split(';')
+            dado[1] = dado[1].replace('\n', '')
+            if cpf in dado:
+                saida = True
+                return saida
+        return False
+
+
+def query_Pjuridica_cadastro(db_Pjrudica, consulta, saida=False):
+    try:
+        ler = open(db_Pjrudica, 'rt')    # r = read e t = texto
+    except (Error):
+        print('\033[0;31mErro ao ler o arquivo\033[m')
+    else:
+        while True:
+            cnpj = str(input(consulta))
+            if '.' not in cnpj:
+                print(f'\033[31m ERRO, insira pontuações \033[m')
+            elif '/' not in cnpj:
+                print(f'\033[31m ERRO, insira a barra \033[m')
+            elif '-' not in cnpj:
+                print(f'\033[31m ERRO, insira o hífen \033[m')
+            elif len(cnpj) < 18 and '.-' not in cnpj:
+                print(f'\033[31m ERRO, mínimo caracteres [14] \033[m')
+            elif len(cnpj) > 18:
+                print(f'\033[31m ERRO, máximo caracteres [14] \033[m')
+            else:
+                break
+        for linha in ler:
+            dado = linha.split(';')
+            dado[1] = dado[1].replace('\n', '')
+            if cnpj == dado[2]:
+                saida = True
+                return saida
+        return False
+    

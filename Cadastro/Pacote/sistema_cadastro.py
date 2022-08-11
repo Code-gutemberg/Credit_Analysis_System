@@ -69,7 +69,7 @@ while True:
                 if dados.query_Pjuridica(arquivo_Pjuridica, cnpj, resposta_Pjuridica) == False:
                     print('CNPJ não existe')
                     while True:
-                        usuario = str(input('Deseja Cadastrar um Novo usuário [S/N]: ')).upper()[0]
+                        usuario = str(input('Deseja Cadastrar uma Nova empresa [S/N]: ')).upper()[0]
                         if usuario in 'S':
                             fluxo = list()
                             while True:
@@ -116,63 +116,103 @@ while True:
         sleep(1)
         break
     
-    elif usuario == 2:      # Menu Cadastro de Usuário
+    elif usuario == 2:      # MENU Cadastro de Usuário
         interface.titulo('[+] NOVO CADASTRO')
         interface.submenu()
         usuario = interface.LeiaInt('Digite o código correspondente: ')
-        if usuario == 1:
-            while True:
-                nome = str(input('Nome: '))
-                if len(nome) > 40:
-                    print(f'\033[31m ERRO, máximo caracteres [40] \033[m')
-                elif len(nome) < 3:
-                    print(f'\033[31m ERRO, mínimo caracteres [3] \033[m')
-                else:
-                    cpf = str(input('CPF: '))
-                    if '.' not in cpf:
-                        print(f'\033[31m ERRO, insira pontuações \033[m')
-                    elif '-' not in cpf:
-                        print(f'\033[31m ERRO, insira o hífen \033[m')
-                    elif len(cpf) < 14 and '.-' not in cpf:
-                        print(f'\033[31m ERRO, mínimo caracteres [14] \033[m')
-                    elif len(cpf) > 14:
-                        print(f'\033[31m ERRO, máximo caracteres [14] \033[m')
-                    else:
-                        idade = interface.LeiaInt('Idade: ')
-                        renda = dados.ler_moeda('Renda Liquida: R$ ')
+        if usuario == 1:    # SUBMENU Pessoa física
+            interface.titulo('[=] CONSULTA DE CPF NO BANCO DE DADOS')
+            cpf = 'Digite o CPF: '
+            resposta_Pfisica = False
+            if dados.query_Pfisica_cadastro(arquivo_Pfisica, cpf, resposta_Pfisica) == True:
+                interface.titulo(f'JÁ EXISTE CADASTRO DO USUÁRIO')
+                sleep(2)
+            else:
+                interface.titulo(f'USUÁRIO NÃO CADASTRADO')
+                while True:
+                    usuario = str(input('Deseja Cadastrar um Novo usuário [S/N]: ')).upper()[0]
+                    if usuario in 'S':
+                        interface.titulo('[+] NOVO CADASTRO')
+                        while True:
+                            nome = str(input('Nome: '))
+                            if len(nome) > 40:
+                                print(f'\033[31m ERRO, máximo caracteres [40] \033[m')
+                            elif len(nome) < 3:
+                                print(f'\033[31m ERRO, mínimo caracteres [3] \033[m')
+                            else:
+                                cpf = str(input('CPF: '))
+                                if '.' not in cpf:
+                                    print(f'\033[31m ERRO, insira pontuações \033[m')
+                                elif '-' not in cpf:
+                                    print(f'\033[31m ERRO, insira o hífen \033[m')
+                                elif len(cpf) < 14 and '.-' not in cpf:
+                                    print(f'\033[31m ERRO, mínimo caracteres [14] \033[m')
+                                elif len(cpf) > 14:
+                                    print(f'\033[31m ERRO, máximo caracteres [14] \033[m')
+                                else:
+                                    idade = interface.LeiaInt('Idade: ')
+                                    renda = dados.ler_moeda('Renda Liquida: R$ ')
+                                    break
+                        dados.escrever_Pfisica(arquivo_Pfisica, nome, cpf, idade, renda)  # type: ignore
+                    elif usuario in 'N':
                         break
-            dados.escrever_Pfisica(arquivo_Pfisica, nome, cpf, idade, renda)  # type: ignore
-        elif usuario == 2:
-            fluxo = list()
-            while True:
-                nome = str(input('Nome da Empresa: '))
-                if len(nome) > 40:
-                    print(f'\033[31m ERRO, máximo caracteres [40] \033[m')
-                elif len(nome) < 3:
-                    print(f'\033[31m ERRO, mínimo caracteres [3] \033[m')
-                else:
-                    cnpj = str(input('CNPJ: '))
-                    if '.' not in cnpj:
-                        print(f'\033[31m ERRO, insira pontuações \033[m')
-                    elif '/' not in cnpj:
-                        print(f'\033[31m ERRO, insira a barra \033[m')
-                    elif '-' not in cnpj:
-                        print(f'\033[31m ERRO, insira o hífen \033[m')
-                    elif len(cnpj) < 18 and '.-' not in cnpj:
-                        print(f'\033[31m ERRO, mínimo caracteres [14] \033[m')
-                    elif len(cnpj) > 18:
-                        print(f'\033[31m ERRO, máximo caracteres [14] \033[m')
                     else:
-                        porte = str(input('Porte da empresa: '))
-                        capital = dados.ler_moeda('Capital Imobilizado: R$ ')
-                        fluxo.append(dados.ler_moeda('Fluxo de Caixa Mês 1/3: R$ '))
-                        fluxo.append(dados.ler_moeda('Fluxo de Caixa Mês 2/3: R$ '))
-                        fluxo.append(dados.ler_moeda('Fluxo de Caixa Mês 3/3: R$ '))
-                        dre = dados.ler_moeda('Demonstração de Resultado do Exercício: R$ ')
-                        soma_fluxo = sum(fluxo)
+                        print('\033[31mERRO, digite SIM ou NÃO \033[m')
+                if usuario in 'N':
+                    interface.titulo('[!] PROGRAMA ENCERRADO COM SUCESSO!')
+                    sleep(1)
+                    break
+            
+        elif usuario == 2:      # SUBMENU Pessoa Jurídica
+            interface.titulo('[=] CONSULTA DE CNPJ NO BANCO DE DADOS')
+            cnpj = 'Digite o CNPJ: '
+            resposta_Pjuridica = False
+            if dados.query_Pjuridica_cadastro(arquivo_Pjuridica, cnpj, resposta_Pjuridica) == True:
+                interface.titulo(f'JÁ EXISTE CADASTRO DA EMPRESA')
+                sleep(2)
+            else:
+                interface.titulo(f'EMPRESA NÃO CADASTRADA')
+                while True:
+                    usuario = str(input('Deseja Cadastrar uma Nova empresa? [S/N]: ')).upper()[0]
+                    if usuario in 'S':
+                        fluxo = list()
+                        while True:
+                            nome = str(input('Nome da Empresa: '))
+                            if len(nome) > 40:
+                                print(f'\033[31m ERRO, máximo caracteres [40] \033[m')
+                            elif len(nome) < 3:
+                                print(f'\033[31m ERRO, mínimo caracteres [3] \033[m')
+                            else:
+                                cnpj = str(input('CNPJ: '))
+                                if '.' not in cnpj:
+                                    print(f'\033[31m ERRO, insira pontuações \033[m')
+                                elif '/' not in cnpj:
+                                    print(f'\033[31m ERRO, insira a barra \033[m')
+                                elif '-' not in cnpj:
+                                    print(f'\033[31m ERRO, insira o hífen \033[m')
+                                elif len(cnpj) < 18 and '.-' not in cnpj:
+                                    print(f'\033[31m ERRO, mínimo caracteres [14] \033[m')
+                                elif len(cnpj) > 18:
+                                    print(f'\033[31m ERRO, máximo caracteres [14] \033[m')
+                                else:
+                                    porte = str(input('Porte da empresa: '))
+                                    capital = dados.ler_moeda('Capital Imobilizado: R$ ')
+                                    fluxo.append(dados.ler_moeda('Fluxo de Caixa Mês 1/3: R$ '))
+                                    fluxo.append(dados.ler_moeda('Fluxo de Caixa Mês 2/3: R$ '))
+                                    fluxo.append(dados.ler_moeda('Fluxo de Caixa Mês 3/3: R$ '))
+                                    dre = dados.ler_moeda('Demonstração de Resultado do Exercício: R$ ')
+                                    soma_fluxo = sum(fluxo)
+                                    break
+                        dados.escrever_Pjuridica(arquivo_Pjuridica, nome, cnpj, porte,
+                                                        capital, soma_fluxo, dre)  # type: ignore
+                    elif usuario in 'N':
                         break
-            dados.escrever_Pjuridica(arquivo_Pjuridica, nome, cnpj, porte,
-                                            capital, soma_fluxo, dre)  # type: ignore
+                    else:
+                        print('\033[31mERRO, digite SIM ou NÃO \033[m')
+                if usuario in 'N':
+                    interface.titulo('[!] PROGRAMA ENCERRADO COM SUCESSO!')
+                    sleep(1)
+                    break
     
     elif usuario == 3:      # MENU Remover Usuário
         interface.titulo('[DEL] REMOVER USUÁRIO')
