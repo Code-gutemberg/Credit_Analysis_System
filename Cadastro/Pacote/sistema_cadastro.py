@@ -271,7 +271,7 @@ while True:
                     while True:
                         usuario = str(input('Deseja excluir esse usuário? [S/N]: ')).upper()[0]
                         if usuario in 'S':
-                            dados.DML_Pfisica_excluir
+                            dados.DML_Pfisica_excluir(arquivo_Pfisica, cpf)
                             sleep(2)
                             break
                         elif usuario in 'N':
