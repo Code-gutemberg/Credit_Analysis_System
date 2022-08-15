@@ -155,9 +155,9 @@ Modificar a __*versão 1.2*__ e criar funções QUERY de dados dos bancos.txt a 
         - [x] Criar sistemática de consulta por CPF.
         - [x] Caso CPF inexistente: informar que usuário não existe. 
         - [x] Caso CPF existente: informar mensagem de confirmação.
-            - [ ] Caso resposta sim: remover usuario do banco de dados.
+            - [x] Caso resposta sim: remover usuario do banco de dados.
         - [x] Criar sistemática de consulta por CNPJ.
         - [x] Caso CNPJ inexistente: informar que a empresa não existe. 
         - [x] Caso CNPJ existente: informar mensagem de confirmação.
-            - [ ] Caso resposta sim: remover usuario do banco de dados.
+            - [x] Caso resposta sim: remover usuario do banco de dados.
 

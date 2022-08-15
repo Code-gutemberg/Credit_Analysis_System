@@ -228,19 +228,51 @@ def query_Pjuridica_cadastro(db_Pjrudica, consulta, saida=False):
         return False
 
 
-def DML_Pfisica_excluir(db_Pfisica, consulta):
-    cpf = str(input(consulta))
+def excluir_Pfisica(db_Pfisica, consulta):
+    while True:
+        cpf = str(input(consulta))
+        if '.' not in cpf:
+            print(f'\033[31m ERRO, insira pontuações \033[m')
+        elif '-' not in cpf:
+            print(f'\033[31m ERRO, insira o hífen \033[m')
+        elif len(cpf) < 14 and '.-' not in cpf:
+            print(f'\033[31m ERRO, mínimo caracteres [14] \033[m')
+        elif len(cpf) > 14:
+            print(f'\033[31m ERRO, máximo caracteres [14] \033[m')
+        else:
+            break
     with open(db_Pfisica, 'r') as ler:
         linhas = ler.readlines()
     
-    with open('removido', 'w') as escrever:
+    with open(db_Pfisica, 'w', encoding='utf8') as escrever:
         for linha in linhas:
-            if linha in cpf:
-                escrever.write('Entrou na condição')
-                escrever.write(cpf)
+            if cpf in linha:
+                escrever.write('')
             else:
-                escrever.write('Saiu da condição')
-                escrever.write(cpf)
-        
-def DML_Pjuridica_excluir(db_Pfisica, consulta):
-    print()
+                escrever.write(linha)
+
+
+def excluir_Pjuridica(db_Pjuridica, consulta):
+    while True:
+        cnpj = str(input(consulta))
+        if '.' not in cnpj:
+            print(f'\033[31m ERRO, insira pontuações \033[m')
+        elif '/' not in cnpj:
+            print(f'\033[31m ERRO, insira a barra \033[m')
+        elif '-' not in cnpj:
+            print(f'\033[31m ERRO, insira o hífen \033[m')
+        elif len(cnpj) < 18 and '.-' not in cnpj:
+            print(f'\033[31m ERRO, mínimo caracteres [14] \033[m')
+        elif len(cnpj) > 18:
+            print(f'\033[31m ERRO, máximo caracteres [14] \033[m')
+        else:
+            break
+    with open(db_Pjuridica, 'r') as ler:
+        linhas = ler.readlines()
+    
+    with open(db_Pjuridica, 'w', encoding='utf8') as escrever:
+        for linha in linhas:
+            if cnpj in linha:
+                escrever.write('')
+            else:
+                escrever.write(linha)
