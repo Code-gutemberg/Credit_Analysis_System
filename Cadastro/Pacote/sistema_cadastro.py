@@ -66,9 +66,12 @@ while True:
                         os.system('cls')
                         break
                 else:
-                    excluir = input()
-                    os.system('cls')
-                    break # colocar as opções de análise de crédito
+                    credito = dados.ler_moeda('Valor do Crédito: R$ ')
+                    parcela = interface.LeiaInt('Quantidade da Parcela: ')
+                    dados.credito_Pfisica(arquivo_Pfisica, cpf)
+                    print(dados.credito_Pfisica)
+                    segura = input()
+                    break
                 
             elif usuario == 2:      # SUBMENU Pessoa Jurídica
                 os.system('cls')

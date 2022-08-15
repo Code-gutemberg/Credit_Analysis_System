@@ -4,7 +4,6 @@ from asyncore import write
 from random import randint
 import interface
 from time import sleep
-import os
 
 
 def arquivo_existe(banco_dados):
@@ -276,3 +275,14 @@ def excluir_Pjuridica(db_Pjuridica, consulta):
                 escrever.write('')
             else:
                 escrever.write(linha)
+
+
+def credito_Pfisica(db_Pfisica, identidade, saida=False):
+    cpf = identidade
+    ler = open(db_Pfisica, 'rt')
+    for linha in ler:
+        dado = linha.split(';')
+        dado[1] = dado[1].replace('\n', '')
+        if cpf in dado:
+            saida = float(dado[4].strip('\n'))
+            return saida
