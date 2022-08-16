@@ -138,8 +138,8 @@ Modificar a __*versão 1.2*__ e criar funções QUERY de dados dos bancos.txt a 
     - [x] Modificar menu Proposta de Crédito.
         - [x] Criar sistemática de consulta por CPF.
         - [x] Caso CPF inexistente: iniciar cadastro de usuário.
-        - [ ] Caso CPF existente: iniciar análise de proposta.
-            - [ ] Criar regras de proposta de crédito.
+        - [x] Caso CPF existente: iniciar análise de proposta.
+            - [x] Criar regras de proposta de crédito.
         - [x] Criar sistemática de consulta por CNPJ.
         - [x] Caso CNPJ inexistente: iniciar cadastro de empresa.
         - [ ] Caso CNPJ existente: iniciar análise de proposta.

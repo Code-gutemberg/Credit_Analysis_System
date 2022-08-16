@@ -1,6 +1,5 @@
 '''FUNÇÕES PARA TESTAR, CRIAR, ABRIR E ALIMENTAR DOIS BANCOS DE DADOS EM TXT'''
 from aifc import Error
-from asyncore import write
 from random import randint
 import interface
 from time import sleep
@@ -277,12 +276,49 @@ def excluir_Pjuridica(db_Pjuridica, consulta):
                 escrever.write(linha)
 
 
-def credito_Pfisica(db_Pfisica, identidade, saida=False):
-    cpf = identidade
+def credito_Pfisica(db_Pfisica, consulta='', credito=0.0, parcela=0):
+    cpf = consulta
     ler = open(db_Pfisica, 'rt')
     for linha in ler:
         dado = linha.split(';')
         dado[1] = dado[1].replace('\n', '')
         if cpf in dado:
-            saida = float(dado[4].strip('\n'))
-            return saida
+            saida = dado[4].strip('\n').strip('R$ ').replace(',', '.')
+            # Script para remover tudo que identifique como string
+            emprestimo = credito / parcela
+            if emprestimo > float(saida):
+                interface.titulo('EMPRÉSTIMO REPROVADO')
+            else:
+                interface.titulo('EMPRÉSTIMO APROVADO')
+                print(f'{"ID: "}{dado[0]}')
+                print(f'{"Nome: "}{dado[1]}')
+                print(f'{"CPF: "}{dado[2]}')
+                print(f'Valor do Crédito: {interface.Real(credito)}')
+                print(f'Duração do Contrato: {parcela} meses')
+                print(f'Valor da Parcela: {interface.Real(emprestimo)}')
+
+def credito_Pjuridica(db_Pjuridica, consulta='', credito=0.0, parcela=0):
+    cnpj = consulta
+    ler = open(db_Pjuridica, 'rt')
+    for linha in ler:
+        dado = linha.split(';')
+        dado[1] = dado[1].replace('\n', '')
+        if cnpj in dado:
+            imobilizado = float(dado[4].strip('\n').strip('R$ ').replace(',', '.'))
+            fluxo = float(dado[5].strip('\n').strip('R$ ').replace(',', '.'))
+            dre = float(dado[6].strip('\n').strip('R$ ').replace(',', '.'))
+            # Scripts para remover tudo que identifique como string
+            risco_1 = (imobilizado * 30) / 100      # 30% do imobilizado como garantia
+            risco_2 = (fluxo * 30) / 100    # 30% da soma(3 ultimos meses) do fluxo de caixa como garantia
+            risco_3 = (dre * 30) / 100      # 30% do DRE como garantia
+            if risco_1 >= credito or risco_2 >= credito/parcela or risco_3 >= credito:
+                interface.titulo('EMPRÉSTIMO APROVADO')
+                print(f'{"ID: "}{dado[0]}')
+                print(f'{"Nome da empresa: "}{dado[1]}')
+                print(f'{"CNPJ: "}{dado[2]}')
+                print(f'Valor do Crédito: {interface.Real(credito)}')
+                print(f'Duração do Contrato: {parcela} meses')
+                print(f'Valor da Parcela: {interface.Real(credito/parcela)}')
+            else:
+                interface.titulo('EMPRÉSTIMO REPROVADO')
+    

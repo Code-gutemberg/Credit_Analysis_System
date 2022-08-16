@@ -24,7 +24,6 @@ while True:
             usuario = interface.LeiaInt('Digite o código correspondente: ')
             if usuario == 1:        # SUBMENU Pessoa Física
                 os.system('cls')
-                interface.titulo('[$] ANÁLISE DE PROPOSTA DE CRÉDITO')
                 interface.titulo('[=] CONSULTA DE PESSOA FÍSICA NO BANCO DE DADOS')
                 cpf = 'Digite o CPF: '
                 resposta_Pfisica = False
@@ -66,16 +65,17 @@ while True:
                         os.system('cls')
                         break
                 else:
-                    credito = dados.ler_moeda('Valor do Crédito: R$ ')
-                    parcela = interface.LeiaInt('Quantidade da Parcela: ')
-                    dados.credito_Pfisica(arquivo_Pfisica, cpf)
-                    print(dados.credito_Pfisica)
+                    interface.titulo('[$] ANÁLISE DE PROPOSTA DE CRÉDITO')
+                    cpf = str(input('Digite novamente o CPF: '))
+                    credito = float(input('Valor do Crédito: R$ '))
+                    parcela = int(input('Quantidade da Parcela: '))
+                    query_Pfisica = dados.credito_Pfisica(arquivo_Pfisica, cpf, credito, parcela)
                     segura = input()
+                    os.system('cls')
                     break
                 
             elif usuario == 2:      # SUBMENU Pessoa Jurídica
                 os.system('cls')
-                interface.titulo('[$] ANÁLISE DE PROPOSTA DE CRÉDITO')
                 interface.titulo('[=] CONSULTA DE PESSOA JURÍDICA NO BANCO DE DADOS')
                 cnpj = 'Digite o CNPJ: '
                 resposta_Pjuridica = False
@@ -125,9 +125,14 @@ while True:
                         os.system('cls')
                         break
                 else:
-                    excluir = input()
+                    interface.titulo('[$] ANÁLISE DE PROPOSTA DE CRÉDITO')
+                    cnpj = str(input('Digite novamente o CNPJ: '))
+                    credito = float(input('Valor do Crédito: R$ '))
+                    parcela = int(input('Quantidade da Parcela: '))
+                    query_Pjuridica = dados.credito_Pjuridica(arquivo_Pjuridica, cnpj, credito, parcela)
+                    segura = input()
                     os.system('cls')
-                    break # colocar as opções de análise de crédito
+                    break
 
     elif usuario == 2:      # MENU Cadastro de Usuário
         os.system('cls')
@@ -136,7 +141,6 @@ while True:
         usuario = interface.LeiaInt('Digite o código correspondente: ')
         if usuario == 1:    # SUBMENU Pessoa física
             os.system('cls')
-            interface.titulo('[+] CADASTRAR USUÁRIO')
             interface.titulo('[=] CONSULTA DE PESSOA FÍSICA NO BANCO DE DADOS')
             cpf = 'Digite o CPF: '
             resposta_Pfisica = False
@@ -147,7 +151,6 @@ while True:
                 continue
             else:
                 os.system('cls')
-                interface.titulo('[+] CADASTRAR USUÁRIO')
                 interface.titulo('[=] CONSULTA DE PESSOA FÍSICA NO BANCO DE DADOS')
                 interface.titulo(f'USUÁRIO NÃO CADASTRADO')
                 while True:
@@ -188,7 +191,6 @@ while True:
             
         elif usuario == 2:      # SUBMENU Pessoa Jurídica
             os.system('cls')
-            interface.titulo('[+] CADASTRAR USUÁRIO')
             interface.titulo('[=] CONSULTA DE PESSOA JURÍDICA NO BANCO DE DADOS')
             cnpj = 'Digite o CNPJ: '
             resposta_Pjuridica = False
@@ -199,7 +201,6 @@ while True:
                 continue
             else:
                 os.system('cls')
-                interface.titulo('[+] CADASTRAR USUÁRIO')
                 interface.titulo('[=] CONSULTA DE PESSOA JURÍDICA NO BANCO DE DADOS')
                 interface.titulo(f'EMPRESA NÃO CADASTRADA')
                 while True:
@@ -255,7 +256,6 @@ while True:
             usuario = interface.LeiaInt('Digite o código correspondente: ')
             if usuario == 1:    # SUBMENU pessoa física
                 os.system('cls')
-                interface.titulo('[DEL] REMOVER USUÁRIO')
                 interface.titulo('[=] CONSULTA PESSOA FÍSICA NO BANCO DE DADOS')
                 cpf = 'Digite o CPF: '
                 resposta_Pfisica = False
@@ -286,7 +286,6 @@ while True:
                 
             elif usuario == 2:  # SUBMENU pessoa jurídica
                 os.system('cls')
-                interface.titulo('[DEL] REMOVER USUÁRIO')
                 interface.titulo('[=] CONSULTA PESSOA JURÍDICA NO BANCO DE DADOS')
                 cnpj = 'Digite o CNPJ: '
                 resposta_Pjuridica = False
@@ -315,7 +314,7 @@ while True:
                         os.system('cls')
                         break
 
-    elif usuario == 4:      # Menu Sair do Programa
+    elif usuario == 4:      # MENU Sair do Programa
         interface.titulo('[!] PROGRAMA ENCERRADO COM SUCESSO!')
         sleep(2)
         os.system('cls')
