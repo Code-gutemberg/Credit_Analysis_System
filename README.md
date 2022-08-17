@@ -160,4 +160,7 @@ Modificar a __*versão 1.2*__ e criar funções QUERY de dados dos bancos.txt a 
         - [x] Caso CNPJ inexistente: informar que a empresa não existe. 
         - [x] Caso CNPJ existente: informar mensagem de confirmação.
             - [x] Caso resposta sim: remover usuario do banco de dados.
-
+    - [x] Criar Autenticação de usuario root e senha.
+        - [x] Criar Banco de dados txt para usuario root.
+        - [x] Criar função para autenticação de usuario root e senha.
+        - [x] Modificar programa para aceitar só usuários permitidos.

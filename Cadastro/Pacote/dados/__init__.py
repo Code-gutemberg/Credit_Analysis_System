@@ -4,6 +4,17 @@ from random import randint
 import interface
 from time import sleep
 
+def autenticacao(db_root, usuario='', senha=''):
+    root = usuario
+    senha_root = senha
+    ler = open(db_root, 'rt')
+    for linha in ler:
+        dado = linha.split(';')
+        if root in dado[0] and senha_root in dado[1]:
+            return True
+        else:
+            return False
+
 
 def arquivo_existe(banco_dados):
     """Descrição
@@ -296,6 +307,7 @@ def credito_Pfisica(db_Pfisica, consulta='', credito=0.0, parcela=0):
                 print(f'Valor do Crédito: {interface.Real(credito)}')
                 print(f'Duração do Contrato: {parcela} meses')
                 print(f'Valor da Parcela: {interface.Real(emprestimo)}')
+
 
 def credito_Pjuridica(db_Pjuridica, consulta='', credito=0.0, parcela=0):
     cnpj = consulta
