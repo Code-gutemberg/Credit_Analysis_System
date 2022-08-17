@@ -142,8 +142,8 @@ Modificar a __*versão 1.2*__ e criar funções QUERY de dados dos bancos.txt a 
             - [x] Criar regras de proposta de crédito.
         - [x] Criar sistemática de consulta por CNPJ.
         - [x] Caso CNPJ inexistente: iniciar cadastro de empresa.
-        - [ ] Caso CNPJ existente: iniciar análise de proposta.
-            - [ ] Criar regras de proposta de crédito.
+        - [x] Caso CNPJ existente: iniciar análise de proposta.
+            - [x] Criar regras de proposta de crédito.
     - [x] Modificar menu Cadastrar Usuário.
         - [x] Criar sistemática de consulta por CPF.
         - [x] Caso CPF inexistente: iniciar cadastro de usuário. 
@@ -164,3 +164,21 @@ Modificar a __*versão 1.2*__ e criar funções QUERY de dados dos bancos.txt a 
         - [x] Criar Banco de dados txt para usuario root.
         - [x] Criar função para autenticação de usuario root e senha.
         - [x] Modificar programa para aceitar só usuários permitidos.
+
+
+**Técnicas utilizadas:**
+
+* importações de bibliotecas
+* modularização
+* condicionais
+* loops While e For
+* colorização com códigos ANSCI
+* leitura e gravação de arquivos txt
+* Funções
+* Tratamento de erros Try, except, else, Finally
+* Dicionário
+* Lista
+* Calculos de juros simples
+
+**Telas do Programa:**
+
