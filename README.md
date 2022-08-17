@@ -182,3 +182,10 @@ Modificar a __*versão 1.2*__ e criar funções QUERY de dados dos bancos.txt a 
 
 **Telas do Programa:**
 
+[Tela autenticação](https://user-images.githubusercontent.com/109303611/185231467-c81c9810-74c7-49d7-94cb-25142aaafb6c.JPG)
+
+[Tela Emprestimo Pessoa Física](https://user-images.githubusercontent.com/109303611/185231567-959b8219-5d92-42ba-b056-e33c78394631.JPG)
+
+[Tela Emprestimo Pessoa Jurídica](https://user-images.githubusercontent.com/109303611/185231653-95ce425a-b21e-4218-afc9-7cb9892aa89d.JPG)
+
+[Tela de Consulta Por CPF/CNPJ](https://user-images.githubusercontent.com/109303611/185231725-32fe6d70-211c-48ab-a269-32aacab761b4.JPG)
