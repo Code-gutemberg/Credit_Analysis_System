@@ -24,8 +24,7 @@ Sistema simples **(prompt command)** que cadastra pessoas e a idade, escrito em 
 
 [Tela do banco de dados](https://user-images.githubusercontent.com/109303611/183476552-8922fefd-189e-4462-a068-807f6f96cf09.JPG)
 
-
-
+---
 ### English translation
 
 #### Summary version 1.0:
