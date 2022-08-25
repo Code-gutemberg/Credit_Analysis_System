@@ -51,11 +51,9 @@ Simple system **(command prompt)** that registers people and age, written in Pyt
 
 [Database screen](https://user-images.githubusercontent.com/109303611/183476552-8922fefd-189e-4462-a068-807f6f96cf09.JPG)
 
-
-
 ---
 
-### Resumo versão 1.1:
+#### Resumo versão 1.1:
 
 Modificar a __*versão 1.0*__ para sistema de análise de crédito de pessoa física e pessoa jurídica.
 
@@ -106,12 +104,10 @@ Modificar a __*versão 1.0*__ para sistema de análise de crédito de pessoa fí
 [Tela Banco de Dados Pessoa jurídica](https://user-images.githubusercontent.com/109303611/183444968-366dcbc2-9afc-48e4-85e2-00f5044ba12e.JPG)
 
 [Tela análise de proposta](https://user-images.githubusercontent.com/109303611/183444983-6f3ca69f-c53c-4428-9814-5616e0cf0cb9.JPG)
+---
+### English translation
 
-
-
-# English translation
-
-### Summary version 1.1:
+#### Summary version 1.1:
 
 Modify __*version 1.0*__ for individual and legal entity credit analysis system.
 
@@ -161,10 +157,9 @@ Modify __*version 1.0*__ for individual and legal entity credit analysis system.
 
 [Proposal analysis screen](https://user-images.githubusercontent.com/109303611/183444983-6f3ca69f-c53c-4428-9814-5616e0cf0cb9.JPG)
 
-
 ___
 
-### Resumo versão 1.2:
+#### Resumo versão 1.2:
 
 Modificar a __*versão 1.1*__ e melhorar o sistema de análise de crédito.
 
@@ -208,12 +203,10 @@ Modificar a __*versão 1.1*__ e melhorar o sistema de análise de crédito.
 [Tela de Remover Usuário](https://user-images.githubusercontent.com/109303611/183923752-3098e190-ffbb-43cf-9b05-5c82d5ef4dd7.JPG)
 
 [Tela Consulta de usuario dentro de Remover Usuario](https://user-images.githubusercontent.com/109303611/183923845-93024dab-c60a-4044-9266-8213af62fe01.JPG)
+---
+### English translation
 
-
-
-# English translation
-
-### Summary version 1.2:
+#### Summary version 1.2:
 
 Modify __*version 1.1*__ and improve the credit analysis system.
 
@@ -258,11 +251,9 @@ Modify __*version 1.1*__ and improve the credit analysis system.
 
 [User Query screen inside Remove User](https://user-images.githubusercontent.com/109303611/183923845-93024dab-c60a-4044-9266-8213af62fe01.JPG)
 
-
-
 ___
 
-### Resumo versão 1.3:
+#### Resumo versão 1.3:
 
 Modificar a __*versão 1.2*__ e criar funções QUERY de dados dos bancos.txt a partir da função ler_db.
 
@@ -324,12 +315,10 @@ Modificar a __*versão 1.2*__ e criar funções QUERY de dados dos bancos.txt a 
 [Tela Emprestimo Pessoa Jurídica](https://user-images.githubusercontent.com/109303611/185231653-95ce425a-b21e-4218-afc9-7cb9892aa89d.JPG)
 
 [Tela de Consulta Por CPF/CNPJ](https://user-images.githubusercontent.com/109303611/185231725-32fe6d70-211c-48ab-a269-32aacab761b4.JPG)
+---
+### English translation
 
-
-
-# English translation
-
-### Summary version 1.3:
+#### Summary version 1.3:
 
 Modify __*version 1.2*__ and create QUERY functions from databases.txt from the function read_db.
 
@@ -394,7 +383,7 @@ Modify __*version 1.2*__ and create QUERY functions from databases.txt from the 
 
 ___
 
-### Resumo versão 1.4:
+#### Resumo versão 1.4:
 
 Traduzir do português brasileiro para o inglês técnico as funções e variáveis ​​do programa. Tornar o README em Português e Inglês.
 
@@ -405,11 +394,10 @@ Traduzir do português brasileiro para o inglês técnico as funções e variáv
     - [x] Traduzir as variáveis.
     - [ ] Incluir o Inglês técnico nas versões anteriores.
 
+---
+### English translation
 
-
-# English translation
-
-### Summary version 1.4:
+#### Summary version 1.4:
 
 Translate from Brazilian Portuguese to technical English the program functions and variables. Make the README in Portuguese and English.
 
