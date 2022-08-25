@@ -397,7 +397,7 @@ Traduzir do português brasileiro para o inglês técnico as funções e variáv
 - [x] Modificações:
     - [x] Traduzir as funções.
     - [x] Traduzir as variáveis.
-    - [ ] Incluir o Inglês técnico nas versões anteriores.
+    - [x] Incluir o Inglês técnico nas versões anteriores.
 
 ---
 ### English translation
@@ -412,4 +412,4 @@ Translate from Brazilian Portuguese to technical English the program functions a
     - [x] translate the functions.
     - [x] translate the variables.
     - [x] translate the variables.
-    - [ ] Include technical English in previous modifications
+    - [x] Include technical English in previous modifications
