@@ -28,7 +28,7 @@ Sistema simples **(prompt command)** que cadastra pessoas e a idade, escrito em 
 
 ### English translation
 
-### Summary version 1.0:
+#### Summary version 1.0:
 
 Simple system **(command prompt)** that registers people and age, written in Python with a file with txt extension as a database.
 
