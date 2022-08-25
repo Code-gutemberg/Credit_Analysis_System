@@ -43,7 +43,7 @@ Simple system **(command prompt)** that registers people and age, written in Pyt
 * Try, except, else, Finally error handling
 * Dictionary
 
-**Telas do Programa:**
+**program screens:**
 
 [Main screen](https://user-images.githubusercontent.com/109303611/183476531-02f29dea-5e8a-4b7d-888d-41907baaaf25.JPG)
 
@@ -149,6 +149,8 @@ Modify __*version 1.0*__ for individual and legal entity credit analysis system.
 * Try, except, else, Finally error handling
 * Dictionary
 * List
+
+**program screens:**
 
 [Main screen](https://user-images.githubusercontent.com/109303611/183444915-c5446a8f-d05c-4f4d-a1f5-97349923137d.JPG)
 
