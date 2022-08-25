@@ -26,7 +26,7 @@ Sistema simples **(prompt command)** que cadastra pessoas e a idade, escrito em 
 
 
 
-# English translation
+### English translation
 
 ### Summary version 1.0:
 
