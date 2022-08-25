@@ -1,14 +1,7 @@
-def LeiaInt(entrada):
-    """Descrição:
-    Função para verificar se a entrada é do tipo inteiro.
-    Parâmetro:
-        entrada (str): recebe uma string.
-    Retorno:
-        inteiro: retorna um número inteiro.
-    """
+def read_int(entry):
     while True:
         try:
-            inteiro = int(input(entrada))
+            read_int = int(input(entry))
         except (ValueError, TypeError):
             print('\033[0;31mERRO, Digite um número válido.\033[m')
             continue
@@ -16,16 +9,16 @@ def LeiaInt(entrada):
             print('\033[0;31mOcorreu alguma interrupção\033[m')
             break
         else:
-            return inteiro
+            return read_int
 
 
-def titulo(msg):
+def title(msg):
     print('=' * 50)
     print(msg.center(50))
     print('=' * 50)
 
 
-def subtitulo():
+def subtitle():
     menu = dict()
     menu[1] = 'Proposta de Crédito [ $ ]'
     menu[2] = 'Cadastrar Usuário \t[ + ]'
@@ -36,9 +29,9 @@ def subtitulo():
     print('=' * 50)
 
 
-def usuarios_db():
+def user_db():
     print('=' * 50)
-    titulo('[=] BANCO DE DADOS'.center(50))
+    title('[=] BANCO DE DADOS'.center(50))
 
 
 def submenu():
@@ -48,17 +41,9 @@ def submenu():
     print('=' * 50)
 
 
-def erro_codigo():
+def error_code():
     print('\033[0;31mERRO, Digite um número válido.\033[m')
 
 
-def Real(preço, moeda='R$'):     # Formata para Real BR.
-    """-> Descrição
-
-    Parâmetros:
-        preço (int/float): Preço recebido
-        moeda (str, optional): Opcional com formato em Real Brasileiro R$'.
-    Retorno:
-        str: retorna o valor formatado em Real Brasileiro R$'.
-    """
-    return f'{moeda} {preço:.2f}'.replace(".", ",")
+def Real(price, coin='R$'):     # Formata para Real BR.
+    return f'{coin} {price:.2f}'.replace(".", ",")

@@ -1,1 +1,1 @@
-from Cadastro.Pacote import dados, interface
+from Cadastro.Pacote import data, interface
