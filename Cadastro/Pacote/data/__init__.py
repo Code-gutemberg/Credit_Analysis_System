@@ -39,7 +39,6 @@ def create_file(db):
 
 
 def write_Pfisica(db_Pfisica, name='', cpf='', age=0, income=0):
-    id = 0
     try:
         write = open(db_Pfisica, 'at+')
     except:
@@ -57,7 +56,6 @@ def write_Pfisica(db_Pfisica, name='', cpf='', age=0, income=0):
 
 
 def write_Pjuridica(db_Pjuridica, name='', cnpj='', size='', capital=0, flow=0, dre=0):
-    id = 0
     try:
         write = open(db_Pjuridica, 'at+')
     except:
