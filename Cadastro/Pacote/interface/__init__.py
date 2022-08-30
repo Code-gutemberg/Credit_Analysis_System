@@ -1,17 +1,3 @@
-def read_int(entry):
-    while True:
-        try:
-            read_int = int(input(entry))
-        except (ValueError, TypeError):
-            print('\033[0;31mERRO, Digite um número válido.\033[m')
-            continue
-        except (KeyboardInterrupt):
-            print('\033[0;31mOcorreu alguma interrupção\033[m')
-            break
-        else:
-            return read_int
-
-
 def title(msg):
     print('=' * 50)
     print(msg.center(50))

@@ -1,18 +1,20 @@
-'''FUNÇÕES PARA TESTAR, CRIAR, ABRIR E ALIMENTAR DOIS BANCOS DE DADOS EM TXT'''
 from random import randint
-import interface
+import interface, treatment
 from time import sleep
 
 def auth(db_root, user='', password=''):
-    root = user
-    pass_root = password
-    read = open(db_root, 'rt')
-    for line in read:
-        data = line.split(';')
-        if root in data[0] and pass_root in data[1]:
-            return True
-        else:
-            return False
+    if password == '':
+        return False
+    else:
+        root = user
+        pass_root = password
+        read = open(db_root, 'rt')
+        for line in read:
+            data = line.split(';')
+            if root in data[0] and pass_root in data[1]:
+                return True
+            else:
+                return False
 
 
 def file_exists(db):
@@ -74,41 +76,13 @@ def write_Pjuridica(db_Pjuridica, name='', cnpj='', size='', capital=0, flow=0, 
             write.close()
 
 
-def read_coin(value):
-    while True:
-        valid = False
-        while not valid:
-            cipher = str(input(value)).replace(',', '.').strip()
-            if cipher.isalpha() or cipher == '':
-                print(f'ERRO, [{cipher}] é um preço inválido!')
-            else:
-                try:
-                    valid = True
-                    return float(cipher)
-                except ValueError:
-                    print('ERRO, não inserir pontuação no inicio do valor.'
-                          ' Insira na penúltima casa decimal.')
-                    continue
-
-
-def query_Pfisica(db_Pfisica, query, exit=False):
+def query_Pfisica(db_Pfisica, query):
     try:
         read = open(db_Pfisica, 'rt')
     except:
         print('\033[0;31mErro ao ler o arquivo\033[m')
     else:
-        while True:
-            cpf = str(input(query))
-            if '.' not in cpf:
-                print(f'\033[31m ERRO, insira pontuações \033[m')
-            elif '-' not in cpf:
-                print(f'\033[31m ERRO, insira o hífen \033[m')
-            elif len(cpf) < 14 and '.-' not in cpf:
-                print(f'\033[31m ERRO, mínimo caracteres [14] \033[m')
-            elif len(cpf) > 14:
-                print(f'\033[31m ERRO, máximo caracteres [14] \033[m')
-            else:
-                break
+        cpf = treatment.read_cpf(query)
         for line in read:
             data = line.split(';')
             data[1] = data[1].replace('\n', '')
@@ -123,31 +97,17 @@ def query_Pfisica(db_Pfisica, query, exit=False):
                 print(f'{"Idade: "}{data[3]} anos')
                 print(f'{"Renda Líquida: "}{data[4]}')
                 print('=' * 50)
-                exit = True
-                return exit
+                return True
         return False
 
 
-def query_Pjuridica(db_Pjrudica, query, exit=False):
+def query_Pjuridica(db_Pjrudica, query):
     try:
         read = open(db_Pjrudica, 'rt')
     except:
         print('\033[0;31mErro ao ler o arquivo\033[m')
     else:
-        while True:
-            cnpj = str(input(query))
-            if '.' not in cnpj:
-                print(f'\033[31m ERRO, insira pontuações \033[m')
-            elif '/' not in cnpj:
-                print(f'\033[31m ERRO, insira a barra \033[m')
-            elif '-' not in cnpj:
-                print(f'\033[31m ERRO, insira o hífen \033[m')
-            elif len(cnpj) < 18 and '.-' not in cnpj:
-                print(f'\033[31m ERRO, mínimo caracteres [14] \033[m')
-            elif len(cnpj) > 18:
-                print(f'\033[31m ERRO, máximo caracteres [14] \033[m')
-            else:
-                break
+        cnpj = treatment.read_cnpj(query)
         for line in read:
             data = line.split(';')
             data[1] = data[1].replace('\n', '')
@@ -163,80 +123,42 @@ def query_Pjuridica(db_Pjrudica, query, exit=False):
                 print(f'{"Fluxo de Caixa: "}{data[5]}')
                 print(f'{"DRE: "}{data[6]}')
                 print('=' * 50)
-                exit = True
-                return exit
+                return True
         return False
             
 
-def query_Pfisica_register(db_Pfisica, query, exit=False):
+def query_Pfisica_register(db_Pfisica, query):
     try:
         read = open(db_Pfisica, 'rt')
     except:
         print('\033[0;31mErro ao ler o arquivo\033[m')
     else:
-        while True:
-            cpf = str(input(query))
-            if '.' not in cpf:
-                print(f'\033[31m ERRO, insira pontuações \033[m')
-            elif '-' not in cpf:
-                print(f'\033[31m ERRO, insira o hífen \033[m')
-            elif len(cpf) < 14 and '.-' not in cpf:
-                print(f'\033[31m ERRO, mínimo caracteres [14] \033[m')
-            elif len(cpf) > 14:
-                print(f'\033[31m ERRO, máximo caracteres [14] \033[m')
-            else:
-                break
+        cpf = treatment.read_cpf(query)
         for line in read:
             data = line.split(';')
             data[1] = data[1].replace('\n', '')
             if cpf in data:
-                exit = True
-                return exit
+                return True
         return False
 
 
-def query_Pjuridica_register(db_Pjrudica, query, exit=False):
+def query_Pjuridica_register(db_Pjrudica, query):
     try:
         read = open(db_Pjrudica, 'rt')
     except:
         print('\033[0;31mErro ao ler o arquivo\033[m')
     else:
-        while True:
-            cnpj = str(input(query))
-            if '.' not in cnpj:
-                print(f'\033[31m ERRO, insira pontuações \033[m')
-            elif '/' not in cnpj:
-                print(f'\033[31m ERRO, insira a barra \033[m')
-            elif '-' not in cnpj:
-                print(f'\033[31m ERRO, insira o hífen \033[m')
-            elif len(cnpj) < 18 and '.-' not in cnpj:
-                print(f'\033[31m ERRO, mínimo caracteres [14] \033[m')
-            elif len(cnpj) > 18:
-                print(f'\033[31m ERRO, máximo caracteres [14] \033[m')
-            else:
-                break
+        cnpj = treatment.read_cnpj(query)
         for line in read:
             data = line.split(';')
             data[1] = data[1].replace('\n', '')
             if cnpj == data[2]:
-                exit = True
-                return exit
+                return True
         return False
 
 
 def delete_Pfisica(db_Pfisica, query):
-    while True:
-        cpf = str(input(query))
-        if '.' not in cpf:
-            print(f'\033[31m ERRO, insira pontuações \033[m')
-        elif '-' not in cpf:
-            print(f'\033[31m ERRO, insira o hífen \033[m')
-        elif len(cpf) < 14 and '.-' not in cpf:
-            print(f'\033[31m ERRO, mínimo caracteres [14] \033[m')
-        elif len(cpf) > 14:
-            print(f'\033[31m ERRO, máximo caracteres [14] \033[m')
-        else:
-            break
+    cpf = treatment.read_cpf(query)
     with open(db_Pfisica, 'r') as read:
         lines = read.readlines()
     
@@ -249,20 +171,7 @@ def delete_Pfisica(db_Pfisica, query):
 
 
 def delete_Pjuridica(db_Pjuridica, query):
-    while True:
-        cnpj = str(input(query))
-        if '.' not in cnpj:
-            print(f'\033[31m ERRO, insira pontuações \033[m')
-        elif '/' not in cnpj:
-            print(f'\033[31m ERRO, insira a barra \033[m')
-        elif '-' not in cnpj:
-            print(f'\033[31m ERRO, insira o hífen \033[m')
-        elif len(cnpj) < 18 and '.-' not in cnpj:
-            print(f'\033[31m ERRO, mínimo caracteres [14] \033[m')
-        elif len(cnpj) > 18:
-            print(f'\033[31m ERRO, máximo caracteres [14] \033[m')
-        else:
-            break
+    cnpj = treatment.read_cnpj(query)
     with open(db_Pjuridica, 'r') as read:
         lines = read.readlines()
     

@@ -24,10 +24,11 @@ Sistema simples **(prompt command)** que cadastra pessoas e a idade, escrito em 
 
 [Tela do banco de dados](https://user-images.githubusercontent.com/109303611/183476552-8922fefd-189e-4462-a068-807f6f96cf09.JPG)
 
----
-### English translation
 
-#### Summary version 1.0:
+
+# English translation
+
+### Summary version 1.0:
 
 Simple system **(command prompt)** that registers people and age, written in Python with a file with txt extension as a database.
 
@@ -43,7 +44,7 @@ Simple system **(command prompt)** that registers people and age, written in Pyt
 * Try, except, else, Finally error handling
 * Dictionary
 
-**program screens:**
+**Telas do Programa:**
 
 [Main screen](https://user-images.githubusercontent.com/109303611/183476531-02f29dea-5e8a-4b7d-888d-41907baaaf25.JPG)
 
@@ -51,9 +52,11 @@ Simple system **(command prompt)** that registers people and age, written in Pyt
 
 [Database screen](https://user-images.githubusercontent.com/109303611/183476552-8922fefd-189e-4462-a068-807f6f96cf09.JPG)
 
+
+
 ---
 
-#### Resumo versão 1.1:
+### Resumo versão 1.1:
 
 Modificar a __*versão 1.0*__ para sistema de análise de crédito de pessoa física e pessoa jurídica.
 
@@ -105,10 +108,11 @@ Modificar a __*versão 1.0*__ para sistema de análise de crédito de pessoa fí
 
 [Tela análise de proposta](https://user-images.githubusercontent.com/109303611/183444983-6f3ca69f-c53c-4428-9814-5616e0cf0cb9.JPG)
 
----
-### English translation
 
-#### Summary version 1.1:
+
+# English translation
+
+### Summary version 1.1:
 
 Modify __*version 1.0*__ for individual and legal entity credit analysis system.
 
@@ -150,8 +154,6 @@ Modify __*version 1.0*__ for individual and legal entity credit analysis system.
 * Dictionary
 * List
 
-**program screens:**
-
 [Main screen](https://user-images.githubusercontent.com/109303611/183444915-c5446a8f-d05c-4f4d-a1f5-97349923137d.JPG)
 
 [Individual Database screen](https://user-images.githubusercontent.com/109303611/183444934-cd663dc5-8add-4897-be1e-d7ff03238900.JPG)
@@ -160,9 +162,10 @@ Modify __*version 1.0*__ for individual and legal entity credit analysis system.
 
 [Proposal analysis screen](https://user-images.githubusercontent.com/109303611/183444983-6f3ca69f-c53c-4428-9814-5616e0cf0cb9.JPG)
 
+
 ___
 
-#### Resumo versão 1.2:
+### Resumo versão 1.2:
 
 Modificar a __*versão 1.1*__ e melhorar o sistema de análise de crédito.
 
@@ -207,10 +210,11 @@ Modificar a __*versão 1.1*__ e melhorar o sistema de análise de crédito.
 
 [Tela Consulta de usuario dentro de Remover Usuario](https://user-images.githubusercontent.com/109303611/183923845-93024dab-c60a-4044-9266-8213af62fe01.JPG)
 
----
-### English translation
 
-#### Summary version 1.2:
+
+# English translation
+
+### Summary version 1.2:
 
 Modify __*version 1.1*__ and improve the credit analysis system.
 
@@ -255,9 +259,11 @@ Modify __*version 1.1*__ and improve the credit analysis system.
 
 [User Query screen inside Remove User](https://user-images.githubusercontent.com/109303611/183923845-93024dab-c60a-4044-9266-8213af62fe01.JPG)
 
+
+
 ___
 
-#### Resumo versão 1.3:
+### Resumo versão 1.3:
 
 Modificar a __*versão 1.2*__ e criar funções QUERY de dados dos bancos.txt a partir da função ler_db.
 
@@ -320,10 +326,11 @@ Modificar a __*versão 1.2*__ e criar funções QUERY de dados dos bancos.txt a 
 
 [Tela de Consulta Por CPF/CNPJ](https://user-images.githubusercontent.com/109303611/185231725-32fe6d70-211c-48ab-a269-32aacab761b4.JPG)
 
----
-### English translation
 
-#### Summary version 1.3:
+
+# English translation
+
+### Summary version 1.3:
 
 Modify __*version 1.2*__ and create QUERY functions from databases.txt from the function read_db.
 
@@ -388,28 +395,42 @@ Modify __*version 1.2*__ and create QUERY functions from databases.txt from the 
 
 ___
 
-#### Resumo versão 1.4:
+### Resumo versão 1.4:
 
-Traduzir do português brasileiro para o inglês técnico as funções e variáveis ​​do programa. Tornar o README em Português e Inglês.
+Traduzir do português brasileiro para o inglês técnico as funções e variáveis ​​do programa. Tornar o README em Português e Inglês e outras modificações.
 
 **Escopo para versão 1.4:**
 
-- [x] Modificações:
+- [x] Tradução:
     - [x] Traduzir as funções.
     - [x] Traduzir as variáveis.
     - [x] Incluir o Inglês técnico nas versões anteriores.
+- [x] Outras Modificações.
+    - [x] Criar outro módulo chamado treatment para tratar entrada de dados pelo usuário.
+    - [x] Inserir funções de acordo com o módulo criado.
+    - [x] Otimizar código escrito anteriormente.
+    - [x] Remover o tratamento de CPF e CNPJ nas funções query do módulo data para o módulo treatment.
+    - [x] Criar função chamada read_cpf e read_cnpj no módulo treatment para fazer tratamento de entrada.
 
----
-### English translation
 
-#### Summary version 1.4:
 
-Translate from Brazilian Portuguese to technical English the program functions and variables. Make the README in Portuguese and English.
+
+# English translation
+
+### Summary version 1.4:
+
+Translate from Brazilian Portuguese to technical English the program functions and variables. Make the README in Portuguese and English and other modifications.
 
 **Scope for version 1.4:**
 
-- [x] Modifications:
-    - [x] translate the functions.
-    - [x] translate the variables.
-    - [x] translate the variables.
-    - [x] Include technical English in previous modifications
+- [x] Translation:
+     - [x] Translate the functions.
+     - [x] Translate the variables.
+     - [x] Include technical English in previous versions.
+- [x] Other Modifications.
+     - [x] Create another module called treatment to handle user input.
+     - [x] Insert functions according to the created module.
+     - [x] Optimize previously written code.
+     - [x] Remove the treatment of CPF and CNPJ in the query functions of the data module for the treatment module.
+     - [x] Create function called read_cpf and read_cnpj in the treatment module to handle input.
+    
