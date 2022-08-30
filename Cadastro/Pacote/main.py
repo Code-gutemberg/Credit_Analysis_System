@@ -1,7 +1,6 @@
 # Sistema de Análise de Crédito com manipulação de arquivo txt
 from time import sleep
-import interface
-import data
+import interface, data, treatment
 import os
 
 file_Pfisica = 'db_Pfisica.txt'
@@ -10,10 +9,10 @@ file_root = 'db_root'
 
 if not data.file_exists(file_Pfisica):
     data.create_file(file_Pfisica)
-
+    
 if not data.file_exists(file_Pjuridica):
     data.create_file(file_Pjuridica)
-
+    
 if not data.file_exists(file_root):
     data.create_file(file_root)
 
@@ -29,20 +28,19 @@ while True:
             # MENU Principal
             interface.title('SISTEMA DE ANÁLISE DE CRÉDITO')
             interface.subtitle()                               
-            user = interface.read_int('Digite o código correspondente: ')
+            user = treatment.read_int('Digite o código correspondente: ')
             # MENU Análise de Proposta de Crédito
             if user == 1:
                 os.system('cls')
                 interface.title('[$] ANÁLISE DE PROPOSTA DE CRÉDITO')
                 interface.submenu() # Opção PJ/PF
                 while True:
-                    user = interface.read_int('Digite o código correspondente: ')
+                    user = treatment.read_int('Digite o código correspondente: ')
                     if user == 1:    # SUBMENU Pessoa Física
                         os.system('cls')
                         interface.title('[=] CONSULTA DE PESSOA FÍSICA NO BANCO DE DADOS')
                         cpf = 'Digite o CPF: '
-                        reply_Pfisica = False
-                        if data.query_Pfisica(file_Pfisica, cpf, reply_Pfisica) == False:
+                        if data.query_Pfisica(file_Pfisica, cpf) == False:
                             interface.title(f'USUÁRIO NÃO CADASTRADO')
                             while True:
                                 user = str(input('Deseja Cadastrar um Novo usuário [S/N]: ')).upper()[0]
@@ -67,8 +65,8 @@ while True:
                                             elif len(cpf) > 14:
                                                 print(f'\033[31m ERRO, máximo caracteres [14] \033[m')
                                             else:
-                                                age = interface.read_int('Idade: ')
-                                                income = data.read_coin('Renda Liquida: R$ ')
+                                                age = treatment.read_int('Idade: ')
+                                                income = treatment.read_coin('Renda Liquida: R$ ')
                                                 break
                                     data.write_Pfisica(file_Pfisica, name, cpf, age, income)  # type: ignore
                                 elif user in 'N':
@@ -93,8 +91,7 @@ while True:
                         os.system('cls')
                         interface.title('[=] CONSULTA DE PESSOA JURÍDICA NO BANCO DE DADOS')
                         cnpj = 'Digite o CNPJ: '
-                        reply_Pjuridica = False
-                        if data.query_Pjuridica(file_Pjuridica, cnpj, reply_Pjuridica) == False:
+                        if data.query_Pjuridica(file_Pjuridica, cnpj) == False:
                             interface.title(f'EMPRESA NÃO CADASTRADA')
                             while True:
                                 user = str(input('Deseja Cadastrar uma Nova empresa [S/N]: ')).upper()[0]
@@ -123,11 +120,11 @@ while True:
                                                 print(f'\033[31m ERRO, máximo caracteres [14] \033[m')
                                             else:
                                                 size = str(input('Porte da empresa: '))
-                                                capital = data.read_coin('Capital Imobilizado: R$ ')
-                                                flow.append(data.read_coin('Fluxo de Caixa Mês 1/3: R$ '))
-                                                flow.append(data.read_coin('Fluxo de Caixa Mês 2/3: R$ '))
-                                                flow.append(data.read_coin('Fluxo de Caixa Mês 3/3: R$ '))
-                                                dre = data.read_coin('Demonstração de Resultado do Exercício: R$ ')
+                                                capital = treatment.read_coin('Capital Imobilizado: R$ ')
+                                                flow.append(treatment.read_coin('Fluxo de Caixa Mês 1/3: R$ '))
+                                                flow.append(treatment.read_coin('Fluxo de Caixa Mês 2/3: R$ '))
+                                                flow.append(treatment.read_coin('Fluxo de Caixa Mês 3/3: R$ '))
+                                                dre = treatment.read_coin('Demonstração de Resultado do Exercício: R$ ')
                                                 sum_flow = sum(flow)
                                                 break
                                     data.write_Pjuridica(file_Pjuridica, name, cnpj, size, capital, sum_flow, dre)  # type: ignore
@@ -153,13 +150,12 @@ while True:
                 os.system('cls')
                 interface.title('[+] CADASTRAR USUÁRIO')
                 interface.submenu()
-                user = interface.read_int('Digite o código correspondente: ')
+                user = treatment.read_int('Digite o código correspondente: ')
                 if user == 1:    # SUBMENU Pessoa física
                     os.system('cls')
                     interface.title('[=] CONSULTA DE PESSOA FÍSICA NO BANCO DE DADOS')
                     cpf = 'Digite o CPF: '
-                    reply_Pfisica = False
-                    if data.query_Pfisica_register(file_Pfisica, cpf, reply_Pfisica) == True:
+                    if data.query_Pfisica_register(file_Pfisica, cpf) == True:
                         interface.title(f'JÁ EXISTE CADASTRO DO USUÁRIO')
                         sleep(2)
                         os.system('cls')
@@ -191,8 +187,8 @@ while True:
                                         elif len(cpf) > 14:
                                             print(f'\033[31m ERRO, máximo caracteres [14] \033[m')
                                         else:
-                                            age = interface.read_int('Idade: ')
-                                            income = data.read_coin('Renda Liquida: R$ ')
+                                            age = treatment.read_int('Idade: ')
+                                            income = treatment.read_coin('Renda Liquida: R$ ')
                                             break
                                 data.write_Pfisica(file_Pfisica, name, cpf, age, income)  # type: ignore
                             elif user in 'N':
@@ -208,8 +204,7 @@ while True:
                     os.system('cls')
                     interface.title('[=] CONSULTA DE PESSOA JURÍDICA NO BANCO DE DADOS')
                     cnpj = 'Digite o CNPJ: '
-                    reply_Pjuridica = False
-                    if data.query_Pjuridica_register(file_Pjuridica, cnpj, reply_Pjuridica) == True:
+                    if data.query_Pjuridica_register(file_Pjuridica, cnpj) == True:
                         interface.title(f'JÁ EXISTE CADASTRO DA EMPRESA')
                         sleep(2)
                         os.system('cls')
@@ -245,11 +240,11 @@ while True:
                                             print(f'\033[31m ERRO, máximo caracteres [14] \033[m')
                                         else:
                                             size = str(input('Porte da empresa: '))
-                                            capital = data.read_coin('Capital Imobilizado: R$ ')
-                                            flow.append(data.read_coin('Fluxo de Caixa Mês 1/3: R$ '))
-                                            flow.append(data.read_coin('Fluxo de Caixa Mês 2/3: R$ '))
-                                            flow.append(data.read_coin('Fluxo de Caixa Mês 3/3: R$ '))
-                                            dre = data.read_coin('Demonstração de Resultado do Exercício: R$ ')
+                                            capital = treatment.read_coin('Capital Imobilizado: R$ ')
+                                            flow.append(treatment.read_coin('Fluxo de Caixa Mês 1/3: R$ '))
+                                            flow.append(treatment.read_coin('Fluxo de Caixa Mês 2/3: R$ '))
+                                            flow.append(treatment.read_coin('Fluxo de Caixa Mês 3/3: R$ '))
+                                            dre = treatment.read_coin('Demonstração de Resultado do Exercício: R$ ')
                                             sum_flow = sum(flow)
                                             break
                                 data.write_Pjuridica(file_Pjuridica, name, cnpj, size,
@@ -268,13 +263,12 @@ while True:
                 interface.title('[DEL] REMOVER USUÁRIO')
                 interface.submenu()
                 while True:
-                    user = interface.read_int('Digite o código correspondente: ')
+                    user = treatment.read_int('Digite o código correspondente: ')
                     if user == 1:    # SUBMENU pessoa física
                         os.system('cls')
                         interface.title('[=] CONSULTA PESSOA FÍSICA NO BANCO DE DADOS')
                         cpf = 'Digite o CPF: '
-                        reply_Pfisica = False
-                        if data.query_Pfisica(file_Pfisica, cpf, reply_Pfisica) == False:
+                        if data.query_Pfisica(file_Pfisica, cpf) == False:
                             interface.title(f'USUÁRIO NÃO CADASTRADO')
                             sleep(2)
                             os.system('cls')
@@ -303,8 +297,7 @@ while True:
                         os.system('cls')
                         interface.title('[=] CONSULTA PESSOA JURÍDICA NO BANCO DE DADOS')
                         cnpj = 'Digite o CNPJ: '
-                        reply_Pjuridica = False
-                        if data.query_Pjuridica(file_Pjuridica, cnpj, reply_Pjuridica) == False:
+                        if data.query_Pjuridica(file_Pjuridica, cnpj) == False:
                             interface.title(f'EMPRESA NÃO CADASTRADA')
                             sleep(2)
                             os.system('cls')
@@ -336,6 +329,9 @@ while True:
                 break
             else:
                 interface.error_code()
-                sleep(1)
+                sleep(2)
+                os.system('cls')
+                continue
+        break
     else:
         print('Usuário ou senha inválido. Tente novamente')

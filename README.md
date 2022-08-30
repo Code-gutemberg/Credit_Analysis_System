@@ -397,14 +397,21 @@ ___
 
 ### Resumo versão 1.4:
 
-Traduzir do português brasileiro para o inglês técnico as funções e variáveis ​​do programa. Tornar o README em Português e Inglês.
+Traduzir do português brasileiro para o inglês técnico as funções e variáveis ​​do programa. Tornar o README em Português e Inglês e outras modificações.
 
 **Escopo para versão 1.4:**
 
-- [x] Modificações:
+- [x] Tradução:
     - [x] Traduzir as funções.
     - [x] Traduzir as variáveis.
-    - [ ] Incluir o Inglês técnico nas versões anteriores.
+    - [x] Incluir o Inglês técnico nas versões anteriores.
+- [x] Outras Modificações.
+    - [x] Criar outro módulo chamado treatment para tratar entrada de dados pelo usuário.
+    - [x] Inserir funções de acordo com o módulo criado.
+    - [x] Otimizar código escrito anteriormente.
+    - [x] Remover o tratamento de CPF e CNPJ nas funções query do módulo data para o módulo treatment.
+    - [x] Criar função chamada read_cpf e read_cnpj no módulo treatment para fazer tratamento de entrada.
+
 
 
 
@@ -412,12 +419,18 @@ Traduzir do português brasileiro para o inglês técnico as funções e variáv
 
 ### Summary version 1.4:
 
-Translate from Brazilian Portuguese to technical English the program functions and variables. Make the README in Portuguese and English.
+Translate from Brazilian Portuguese to technical English the program functions and variables. Make the README in Portuguese and English and other modifications.
 
 **Scope for version 1.4:**
 
-- [x] Modifications:
-    - [x] translate the functions.
-    - [x] translate the variables.
-    - [x] translate the variables.
-    - [ ] Include technical English in previous modifications
+- [x] Translation:
+     - [x] Translate the functions.
+     - [x] Translate the variables.
+     - [x] Include technical English in previous versions.
+- [x] Other Modifications.
+     - [x] Create another module called treatment to handle user input.
+     - [x] Insert functions according to the created module.
+     - [x] Optimize previously written code.
+     - [x] Remove the treatment of CPF and CNPJ in the query functions of the data module for the treatment module.
+     - [x] Create function called read_cpf and read_cnpj in the treatment module to handle input.
+    
