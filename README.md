@@ -411,6 +411,7 @@ Traduzir do português brasileiro para o inglês técnico as funções e variáv
     - [x] Otimizar código escrito anteriormente.
     - [x] Remover o tratamento de CPF e CNPJ nas funções query do módulo data para o módulo treatment.
     - [x] Criar função chamada read_cpf e read_cnpj no módulo treatment para fazer tratamento de entrada.
+    - [x] Criar Função para substituição da biblioteca Random() para gerar id de forma sequencial.
 
 
 
@@ -433,4 +434,5 @@ Translate from Brazilian Portuguese to technical English the program functions a
      - [x] Optimize previously written code.
      - [x] Remove the treatment of CPF and CNPJ in the query functions of the data module for the treatment module.
      - [x] Create function called read_cpf and read_cnpj in the treatment module to handle input.
+     - [x] Create Function to replace the Random() library to generate id sequentially.
     

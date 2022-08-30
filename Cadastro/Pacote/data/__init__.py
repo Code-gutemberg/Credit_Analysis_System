@@ -1,6 +1,6 @@
-from random import randint
 import interface, treatment
 from time import sleep
+
 
 def auth(db_root, user='', password=''):
     if password == '':
@@ -39,15 +39,13 @@ def create_file(db):
 
 
 def write_Pfisica(db_Pfisica, name='', cpf='', age=0, income=0):
-    id = 0
     try:
         write = open(db_Pfisica, 'at+')
     except:
         print('\033[0;31mErro na abertura do arquivo\033[m')
     else:
         try:
-            id = randint(0, 100)
-            write.write(f'{id};{name};{cpf};{age};{interface.Real(income)}\n')
+            write.write(f'{id(db_Pfisica)};{name};{cpf};{age};{interface.Real(income)}\n')
         except:
             print('\033[0;31mErro na escrita do arquivo\033[m')
         else:
@@ -57,15 +55,13 @@ def write_Pfisica(db_Pfisica, name='', cpf='', age=0, income=0):
 
 
 def write_Pjuridica(db_Pjuridica, name='', cnpj='', size='', capital=0, flow=0, dre=0):
-    id = 0
     try:
         write = open(db_Pjuridica, 'at+')
     except:
         print('\033[0;31mErro na abertura do arquivo\033[m')
     else:
         try:
-            id = randint(0, 100)
-            write.write(f'{id};{name};{cnpj};{size};')
+            write.write(f'{id(db_Pjuridica)};{name};{cnpj};{size};')
             write.write(
                 f'{interface.Real(capital)};{interface.Real(flow)};{interface.Real(dre)}\n')
         except:
@@ -288,3 +284,18 @@ def credit_Pjuridica(db_Pjuridica, query='', credit=0.0, portion=0):
                 print(f'Valor Total do contrato: {interface.Real(credit+high_interest) }')
             else:
                 interface.title('EMPRÉSTIMO REPROVADO')
+
+
+def id(db_id, default='0'):
+    id = list()
+    with open(db_id, 'r') as read:
+        lines = read.readlines()
+        for line in lines:
+            while True:
+                if default in line.split(';'):
+                    sum = int(default) + 1
+                    default = str(sum)
+                    id.append(default)
+                    break
+        return id[-1]
+

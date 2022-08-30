@@ -5,7 +5,7 @@ import os
 
 file_Pfisica = 'db_Pfisica.txt'
 file_Pjuridica = 'db_Pjuridica.txt'
-file_root = 'db_root'
+file_root = 'db_root.txt'
 
 if not data.file_exists(file_Pfisica):
     data.create_file(file_Pfisica)
