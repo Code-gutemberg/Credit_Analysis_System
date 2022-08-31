@@ -77,8 +77,7 @@ def query_Pfisica(db_Pfisica, query):
     with open(db_Pfisica, 'r') as read:
         for line in read:
             data = line.split(';')
-            data[1] = data[1].replace(';', '')
-            if cpf in data:
+            if cpf == data[2]:
                 print('=' * 50)
                 print('DADOS DO USUÁRIO'.center(50))
                 print('=' * 50)
@@ -90,7 +89,7 @@ def query_Pfisica(db_Pfisica, query):
                 print(f'{"Renda Líquida: "}{data[4]}')
                 print('=' * 50)
                 return True
-            return False
+    return False
 
 
 def query_Pjuridica(db_Pjrudica, query):
@@ -98,7 +97,7 @@ def query_Pjuridica(db_Pjrudica, query):
         cnpj = treatment.read_cnpj(query)
         for line in read:
             data = line.split(';')
-            if cnpj in data:
+            if cnpj == data[2]:
                 print('=' * 50)
                 print('DADOS DA EMPRESA'.center(50))
                 print('=' * 50)
@@ -111,7 +110,7 @@ def query_Pjuridica(db_Pjrudica, query):
                 print(f'{"DRE: "}{data[6]}')
                 print('=' * 50)
                 return True
-            return False
+    return False
             
 
 def query_Pfisica_register(db_Pfisica, query):
@@ -119,9 +118,8 @@ def query_Pfisica_register(db_Pfisica, query):
         cpf = treatment.read_cpf(query)
         for line in read:
             data = line.split(';')
-            if cpf in data:
+            if cpf == data[2]:
                 return True
-            return False
 
 
 def query_Pjuridica_register(db_Pjrudica, query):
@@ -129,20 +127,19 @@ def query_Pjuridica_register(db_Pjrudica, query):
         cnpj = treatment.read_cnpj(query)
         for line in read:
             data = line.split(';')
-            data[1] = data[1].replace('\n', '')
             if cnpj == data[2]:
                 return True
-            return False
 
 
 def delete_Pfisica(db_Pfisica, query):
     cpf = treatment.read_cpf(query)
     with open(db_Pfisica, 'r') as read:
         lines = read.readlines()
-        
-    with open(db_Pfisica, 'w', encoding='utf8') as wr:
-        for line in lines:
+    with open(db_Pfisica, 'w', encoding='utf8') as wr:        
+        for x, line in enumerate(lines):
             if cpf in line:
+                if x == 0:
+                    wr.write('0;0;0;0;0\n')
                 wr.write('')
             else:
                 wr.write(line)
@@ -154,8 +151,10 @@ def delete_Pjuridica(db_Pjuridica, query):
         lines = read.readlines()
     
     with open(db_Pjuridica, 'w', encoding='utf8') as wr:
-        for line in lines:
+        for x, line in enumerate(lines):
             if cnpj in line:
+                if x == 0:
+                    wr.write('0;0;0;0;0;0;0\n')
                 wr.write('')
             else:
                 wr.write(line)

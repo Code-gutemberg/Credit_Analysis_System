@@ -414,6 +414,9 @@ Traduzir do português brasileiro para o inglês técnico as funções e variáv
     - [x] Criar Função para substituição da biblioteca Random() para gerar id de forma sequencial.
     - [x] Otimizar as funções de leitura e gravação dos arquivos txt.
     - [x] Remover a colorização com códigos ANSCI do programa.
+    - [x] informar o usuário logado no programa.
+    - [x] Inserir Tags de erro e sucesso: [ERROR], [SUCESS]
+
 
 
 
@@ -437,4 +440,9 @@ Translate from Brazilian Portuguese to technical English the program functions a
      - [x] Remove the treatment of CPF and CNPJ in the query functions of the data module for the treatment module.
      - [x] Create function called read_cpf and read_cnpj in the treatment module to handle input.
      - [x] Create Function to replace the Random() library to generate id sequentially.
+     - [x] Optimize the functions of reading and writing txt files.
+     - [x] Remove colorization with ANSCI codes from the program.
+     - [x] inform the user logged into the program.
+     - [x] Insert Error and Success Tags: [ERROR], [SUCESS]
+
     

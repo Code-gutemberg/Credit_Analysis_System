@@ -257,7 +257,6 @@ while True:
                                 if user in 'S':
                                     cnpj = 'Digite novamente o CNPJ: '
                                     data.delete_Pjuridica(file_Pjuridica, cnpj)
-                                    os.system('cls')
                                     interface.title(f'[SUCESS] - EMPRESA EXCLUÍDA COM SUCESSO!')
                                     sleep(2)
                                     os.system('cls')
