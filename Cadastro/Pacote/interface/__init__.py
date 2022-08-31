@@ -28,7 +28,7 @@ def submenu():
 
 
 def error_code():
-    print('\033[0;31mERRO, Digite um número válido.\033[m')
+    print('[ERROR] - Digite um número válido.')
 
 
 def Real(price, coin='R$'):     # Formata para Real BR.

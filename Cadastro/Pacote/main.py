@@ -21,74 +21,66 @@ while True:
     password = input('Senha do Usuário: ')
     data.auth(file_root, root, password)
     if data.auth(file_root, root, password) == True:
+        print('Checando banco de dados...')
+        sleep(2)
+        print(f'[SUCESS] - Usuário {root} Logado')
         interface.title('INICIANDO SISTEMA')
         sleep(2)
         os.system('cls')
         while True:
             # MENU Principal
+            print(f'Usuário: {root}')
             interface.title('SISTEMA DE ANÁLISE DE CRÉDITO')
             interface.subtitle()                               
-            user = treatment.read_int('Digite o código correspondente: ')
+            menu = treatment.read_int('Digite o código correspondente: ')
             # MENU Análise de Proposta de Crédito
-            if user == 1:
+            if menu == 1:
                 os.system('cls')
+                print(f'Usuário: {root}')
                 interface.title('[$] ANÁLISE DE PROPOSTA DE CRÉDITO')
                 interface.submenu() # Opção PJ/PF
                 while True:
-                    user = treatment.read_int('Digite o código correspondente: ')
-                    if user == 1:    # SUBMENU Pessoa Física
+                    submenu = treatment.read_int('Digite o código correspondente: ')
+                    if submenu == 1:    # SUBMENU Pessoa Física
                         os.system('cls')
+                        print(f'Usuário: {root}')
                         interface.title('[=] CONSULTA DE PESSOA FÍSICA NO BANCO DE DADOS')
                         cpf = 'Digite o CPF: '
                         if data.query_Pfisica(file_Pfisica, cpf) == False:
                             interface.title(f'USUÁRIO NÃO CADASTRADO')
                             while True:
-                                user = str(input('Deseja Cadastrar um Novo usuário [S/N]: ')).upper()[0]
+                                user = str(input('Deseja Cadastrar um Novo cliente [S/N]: ')).upper()[0]
                                 if user in 'S':
                                     os.system('cls')
+                                    print(f'Usuário: {root}')
                                     interface.title('[+] CADASTRAR USUÁRIO')
                                     interface.title('[+] NOVO CADASTRO DE USUÁRIO')
-                                    while True:
-                                        name = str(input('Nome: '))
-                                        if len(name) > 40:
-                                            print(f'\033[31m ERRO, máximo caracteres [40] \033[m')
-                                        elif len(name) < 3:
-                                            print(f'\033[31m ERRO, mínimo caracteres [3] \033[m')
-                                        else:
-                                            cpf = str(input('CPF: '))
-                                            if '.' not in cpf:
-                                                print(f'\033[31m ERRO, insira pontuações \033[m')
-                                            elif '-' not in cpf:
-                                                print(f'\033[31m ERRO, insira o hífen \033[m')
-                                            elif len(cpf) < 14 and '.-' not in cpf:
-                                                print(f'\033[31m ERRO, mínimo caracteres [14] \033[m')
-                                            elif len(cpf) > 14:
-                                                print(f'\033[31m ERRO, máximo caracteres [14] \033[m')
-                                            else:
-                                                age = treatment.read_int('Idade: ')
-                                                income = treatment.read_coin('Renda Liquida: R$ ')
-                                                break
-                                    data.write_Pfisica(file_Pfisica, name, cpf, age, income)  # type: ignore
+                                    name = treatment.read_name('Nome: ')
+                                    cpf = treatment.read_cpf('CPF: ')
+                                    age = treatment.read_int('Idade: ')
+                                    income = treatment.read_coin('Renda Liquida: R$ ')
+                                    data.write_Pfisica(file_Pfisica, name, cpf, age, income)
                                 elif user in 'N':
                                     os.system('cls')
                                     break
                                 else:
-                                    print('\033[31mERRO, digite SIM ou NÃO \033[m')
+                                    print('[ERROR] - Digite SIM ou NÃO')
                             if user in 'N':
                                 os.system('cls')
                                 break
                         else:
                             interface.title('[$] ANÁLISE DE PROPOSTA DE CRÉDITO')
-                            cpf = str(input('Digite novamente o CPF: '))
-                            credit = float(input('Valor do Crédito: R$ '))
-                            portion = int(input('Quantidade da Parcela: '))
-                            query_Pfisica = data.credit_Pfisica(file_Pfisica, cpf, credit, portion)
+                            cpf = treatment.read_cpf('Digite novamente o CPF: ')
+                            credit = treatment.read_coin('Valor do Crédito: R$ ')
+                            portion = treatment.read_int('Quantidade da Parcela: ')
+                            credit_Pfisica = data.credit_Pfisica(file_Pfisica, cpf, credit, portion)
                             stop = input()
                             os.system('cls')
                             break
                         
-                    elif user == 2:  # SUBMENU Pessoa Jurídica
+                    elif submenu == 2:  # SUBMENU Pessoa Jurídica
                         os.system('cls')
+                        print(f'Usuário: {root}')
                         interface.title('[=] CONSULTA DE PESSOA JURÍDICA NO BANCO DE DADOS')
                         cnpj = 'Digite o CNPJ: '
                         if data.query_Pjuridica(file_Pjuridica, cnpj) == False:
@@ -97,62 +89,47 @@ while True:
                                 user = str(input('Deseja Cadastrar uma Nova empresa [S/N]: ')).upper()[0]
                                 if user in 'S':
                                     os.system('cls')
+                                    print(f'Usuário: {root}')
                                     interface.title('[+] CADASTRAR USUÁRIO')
                                     interface.title('[+] NOVO CADASTRO DE EMPRESA')
                                     flow = list()
-                                    while True:
-                                        name = str(input('Nome da Empresa: '))
-                                        if len(name) > 40:
-                                            print(f'\033[31m ERRO, máximo caracteres [40] \033[m')
-                                        elif len(name) < 3:
-                                            print(f'\033[31m ERRO, mínimo caracteres [3] \033[m')
-                                        else:
-                                            cnpj = str(input('CNPJ: '))
-                                            if '.' not in cnpj:
-                                                print(f'\033[31m ERRO, insira pontuações \033[m')
-                                            elif '/' not in cnpj:
-                                                print(f'\033[31m ERRO, insira a barra \033[m')
-                                            elif '-' not in cnpj:
-                                                print(f'\033[31m ERRO, insira o hífen \033[m')
-                                            elif len(cnpj) < 18 and '.-' not in cnpj:
-                                                print(f'\033[31m ERRO, mínimo caracteres [14] \033[m')
-                                            elif len(cnpj) > 18:
-                                                print(f'\033[31m ERRO, máximo caracteres [14] \033[m')
-                                            else:
-                                                size = str(input('Porte da empresa: '))
-                                                capital = treatment.read_coin('Capital Imobilizado: R$ ')
-                                                flow.append(treatment.read_coin('Fluxo de Caixa Mês 1/3: R$ '))
-                                                flow.append(treatment.read_coin('Fluxo de Caixa Mês 2/3: R$ '))
-                                                flow.append(treatment.read_coin('Fluxo de Caixa Mês 3/3: R$ '))
-                                                dre = treatment.read_coin('Demonstração de Resultado do Exercício: R$ ')
-                                                sum_flow = sum(flow)
-                                                break
-                                    data.write_Pjuridica(file_Pjuridica, name, cnpj, size, capital, sum_flow, dre)  # type: ignore
+                                    name = treatment.read_name('Nome da Empresa: ')
+                                    cnpj = treatment.read_cnpj('CNPJ: ')
+                                    size = str(input('Porte da empresa: ')).upper()
+                                    capital = treatment.read_coin('Capital Imobilizado: R$ ')
+                                    flow.append(treatment.read_coin('Fluxo de Caixa Mês 1/3: R$ '))
+                                    flow.append(treatment.read_coin('Fluxo de Caixa Mês 2/3: R$ '))
+                                    flow.append(treatment.read_coin('Fluxo de Caixa Mês 3/3: R$ '))
+                                    dre = treatment.read_coin('Demonstração de Resultado do Exercício: R$ ')
+                                    sum_flow = sum(flow)
+                                    data.write_Pjuridica(file_Pjuridica, name, cnpj, size, capital, sum_flow, dre)
                                 elif user in 'N':
                                     os.system('cls')
                                     break
                                 else:
-                                    print('\033[31mERRO, digite SIM ou NÃO \033[m')
+                                    print('[ERROR] - Digite SIM ou NÃO')
                             if user in 'N':
                                 os.system('cls')
                                 break
                         else:
                             interface.title('[$] ANÁLISE DE PROPOSTA DE CRÉDITO')
-                            cnpj = str(input('Digite novamente o CNPJ: '))
-                            credit = float(input('Valor do Crédito: R$ '))
-                            portion = int(input('Quantidade da Parcela: '))
-                            query_Pjuridica = data.credit_Pjuridica(file_Pjuridica, cnpj, credit, portion)
+                            cnpj = treatment.read_cnpj('Digite novamente o CNPJ: ')
+                            credit = treatment.read_coin('Valor do Crédito: R$ ')
+                            portion = treatment.read_int('Quantidade da Parcela: ')
+                            credit_Pjuridica = data.credit_Pjuridica(file_Pjuridica, cnpj, credit, portion)
                             stop = input()
                             os.system('cls')
                             break
             # MENU Cadastro de Usuário                
-            elif user == 2:
+            elif menu == 2:
                 os.system('cls')
+                print(f'Usuário: {root}')
                 interface.title('[+] CADASTRAR USUÁRIO')
                 interface.submenu()
-                user = treatment.read_int('Digite o código correspondente: ')
-                if user == 1:    # SUBMENU Pessoa física
+                submenu = treatment.read_int('Digite o código correspondente: ')
+                if submenu == 1:    # SUBMENU Pessoa física
                     os.system('cls')
+                    print(f'Usuário: {root}')
                     interface.title('[=] CONSULTA DE PESSOA FÍSICA NO BANCO DE DADOS')
                     cpf = 'Digite o CPF: '
                     if data.query_Pfisica_register(file_Pfisica, cpf) == True:
@@ -162,46 +139,33 @@ while True:
                         continue
                     else:
                         os.system('cls')
+                        print(f'Usuário: {root}')
                         interface.title('[=] CONSULTA DE PESSOA FÍSICA NO BANCO DE DADOS')
                         interface.title(f'USUÁRIO NÃO CADASTRADO')
                         while True:
                             user = str(input('Deseja Cadastrar um Novo usuário [S/N]: ')).upper()[0]
                             if user in 'S':
                                 os.system('cls')
+                                print(f'Usuário: {root}')
                                 interface.title('[+] CADASTRAR USUÁRIO')
                                 interface.title('[+] NOVO CADASTRO DE USUÁRIO')
-                                while True:
-                                    name = str(input('Nome: '))
-                                    if len(name) > 40:
-                                        print(f'\033[31m ERRO, máximo caracteres [40] \033[m')
-                                    elif len(name) < 3:
-                                        print(f'\033[31m ERRO, mínimo caracteres [3] \033[m')
-                                    else:
-                                        cpf = str(input('CPF: '))
-                                        if '.' not in cpf:
-                                            print(f'\033[31m ERRO, insira pontuações \033[m')
-                                        elif '-' not in cpf:
-                                            print(f'\033[31m ERRO, insira o hífen \033[m')
-                                        elif len(cpf) < 14 and '.-' not in cpf:
-                                            print(f'\033[31m ERRO, mínimo caracteres [14] \033[m')
-                                        elif len(cpf) > 14:
-                                            print(f'\033[31m ERRO, máximo caracteres [14] \033[m')
-                                        else:
-                                            age = treatment.read_int('Idade: ')
-                                            income = treatment.read_coin('Renda Liquida: R$ ')
-                                            break
-                                data.write_Pfisica(file_Pfisica, name, cpf, age, income)  # type: ignore
+                                name = treatment.read_name('Nome: ')
+                                cpf = treatment.read_cpf('CPF: ')
+                                age = treatment.read_int('Idade: ')
+                                income = treatment.read_coin('Renda Liquida: R$ ')
+                                data.write_Pfisica(file_Pfisica, name, cpf, age, income)
                             elif user in 'N':
                                 os.system('cls')
                                 break
                             else:
-                                print('\033[31mERRO, digite SIM ou NÃO \033[m')
+                                print('[ERROR] - Digite SIM ou NÃO')
                         if user in 'N':
                             os.system('cls')
                             continue
                     
-                elif user == 2:      # SUBMENU Pessoa Jurídica
+                elif submenu == 2:      # SUBMENU Pessoa Jurídica
                     os.system('cls')
+                    print(f'Usuário: {root}')
                     interface.title('[=] CONSULTA DE PESSOA JURÍDICA NO BANCO DE DADOS')
                     cnpj = 'Digite o CNPJ: '
                     if data.query_Pjuridica_register(file_Pjuridica, cnpj) == True:
@@ -211,61 +175,46 @@ while True:
                         continue
                     else:
                         os.system('cls')
+                        print(f'Usuário: {root}')
                         interface.title('[=] CONSULTA DE PESSOA JURÍDICA NO BANCO DE DADOS')
                         interface.title(f'EMPRESA NÃO CADASTRADA')
                         while True:
                             user = str(input('Deseja Cadastrar uma Nova empresa? [S/N]: ')).upper()[0]
                             if user in 'S':
                                 os.system('cls')
+                                print(f'Usuário: {root}')
                                 flow = list()
-                                while True:
-                                    interface.title('[+] CADASTRAR USUÁRIO')
-                                    interface.title('[+] NOVO CADASTRO DE EMPRESA')
-                                    name = str(input('Nome da Empresa: '))
-                                    if len(name) > 40:
-                                        print(f'\033[31m ERRO, máximo caracteres [40] \033[m')
-                                    elif len(name) < 3:
-                                        print(f'\033[31m ERRO, mínimo caracteres [3] \033[m')
-                                    else:
-                                        cnpj = str(input('CNPJ: '))
-                                        if '.' not in cnpj:
-                                            print(f'\033[31m ERRO, insira pontuações \033[m')
-                                        elif '/' not in cnpj:
-                                            print(f'\033[31m ERRO, insira a barra \033[m')
-                                        elif '-' not in cnpj:
-                                            print(f'\033[31m ERRO, insira o hífen \033[m')
-                                        elif len(cnpj) < 18 and '.-' not in cnpj:
-                                            print(f'\033[31m ERRO, mínimo caracteres [14] \033[m')
-                                        elif len(cnpj) > 18:
-                                            print(f'\033[31m ERRO, máximo caracteres [14] \033[m')
-                                        else:
-                                            size = str(input('Porte da empresa: '))
-                                            capital = treatment.read_coin('Capital Imobilizado: R$ ')
-                                            flow.append(treatment.read_coin('Fluxo de Caixa Mês 1/3: R$ '))
-                                            flow.append(treatment.read_coin('Fluxo de Caixa Mês 2/3: R$ '))
-                                            flow.append(treatment.read_coin('Fluxo de Caixa Mês 3/3: R$ '))
-                                            dre = treatment.read_coin('Demonstração de Resultado do Exercício: R$ ')
-                                            sum_flow = sum(flow)
-                                            break
-                                data.write_Pjuridica(file_Pjuridica, name, cnpj, size,
-                                                                capital, sum_flow, dre)  # type: ignore
+                                interface.title('[+] CADASTRAR USUÁRIO')
+                                interface.title('[+] NOVO CADASTRO DE EMPRESA')
+                                name = treatment.read_name('Nome da Empresa: ')
+                                cnpj = treatment.read_cnpj('CNPJ: ')
+                                size = str(input('Porte da empresa: ')).upper()
+                                capital = treatment.read_coin('Capital Imobilizado: R$ ')
+                                flow.append(treatment.read_coin('Fluxo de Caixa Mês 1/3: R$ '))
+                                flow.append(treatment.read_coin('Fluxo de Caixa Mês 2/3: R$ '))
+                                flow.append(treatment.read_coin('Fluxo de Caixa Mês 3/3: R$ '))
+                                dre = treatment.read_coin('Demonstração de Resultado do Exercício: R$ ')
+                                sum_flow = sum(flow)
+                                data.write_Pjuridica(file_Pjuridica, name, cnpj, size, capital, sum_flow, dre)
                             elif user in 'N':
                                 break
                             else:
-                                print('\033[31mERRO, digite SIM ou NÃO \033[m')
+                                print('[ERROR] - Digite SIM ou NÃO')
                         if user in 'N':
                             sleep(1)
                             os.system('cls')
                             continue
             # MENU Remover Usuário
-            elif user == 3:
+            elif menu == 3:
                 os.system('cls')
+                print(f'Usuário: {root}')
                 interface.title('[DEL] REMOVER USUÁRIO')
                 interface.submenu()
                 while True:
-                    user = treatment.read_int('Digite o código correspondente: ')
-                    if user == 1:    # SUBMENU pessoa física
+                    submenu = treatment.read_int('Digite o código correspondente: ')
+                    if submenu == 1:    # SUBMENU pessoa física
                         os.system('cls')
+                        print(f'Usuário: {root}')
                         interface.title('[=] CONSULTA PESSOA FÍSICA NO BANCO DE DADOS')
                         cpf = 'Digite o CPF: '
                         if data.query_Pfisica(file_Pfisica, cpf) == False:
@@ -279,8 +228,7 @@ while True:
                                 if user in 'S':
                                     cpf = 'Digite novamente o CPF: '
                                     data.delete_Pfisica(file_Pfisica, cpf)
-                                    os.system('cls')
-                                    interface.title(f'USUÁRIO EXCLUÍDO COM SUCESSO!')
+                                    interface.title(f'[SUCESS] - USUÁRIO EXCLUÍDO COM SUCESSO!')
                                     sleep(2)
                                     os.system('cls')
                                     break
@@ -288,13 +236,14 @@ while True:
                                     os.system('cls')
                                     break
                                 else:
-                                    print('\033[31mERRO, digite SIM ou NÃO \033[m')
+                                    print('[ERROR] - Digite SIM ou NÃO')
                             if user in 'SN':
                                 os.system('cls')
                                 break
                         
-                    elif user == 2:  # SUBMENU pessoa jurídica
+                    elif submenu == 2:  # SUBMENU pessoa jurídica
                         os.system('cls')
+                        print(f'Usuário: {root}')
                         interface.title('[=] CONSULTA PESSOA JURÍDICA NO BANCO DE DADOS')
                         cnpj = 'Digite o CNPJ: '
                         if data.query_Pjuridica(file_Pjuridica, cnpj) == False:
@@ -308,8 +257,7 @@ while True:
                                 if user in 'S':
                                     cnpj = 'Digite novamente o CNPJ: '
                                     data.delete_Pjuridica(file_Pjuridica, cnpj)
-                                    os.system('cls')
-                                    interface.title(f'EMPRESA EXCLUÍDA COM SUCESSO!')
+                                    interface.title(f'[SUCESS] - EMPRESA EXCLUÍDA COM SUCESSO!')
                                     sleep(2)
                                     os.system('cls')
                                     break
@@ -317,12 +265,12 @@ while True:
                                     os.system('cls')
                                     break
                                 else:
-                                    print('\033[31mERRO, digite SIM ou NÃO \033[m')
+                                    print('[ERROR] - Digite SIM ou NÃO')
                             if user in 'NS':
                                 os.system('cls')
                                 break
             # MENU Sair do Programa
-            elif user == 4:
+            elif menu == 4:
                 interface.title('[!] PROGRAMA ENCERRADO COM SUCESSO!')
                 sleep(2)
                 os.system('cls')
@@ -334,4 +282,4 @@ while True:
                 continue
         break
     else:
-        print('Usuário ou senha inválido. Tente novamente')
+        print('[ERROR] - Usuário ou senha inválido. Tente novamente')
