@@ -412,6 +412,8 @@ Traduzir do português brasileiro para o inglês técnico as funções e variáv
     - [x] Remover o tratamento de CPF e CNPJ nas funções query do módulo data para o módulo treatment.
     - [x] Criar função chamada read_cpf e read_cnpj no módulo treatment para fazer tratamento de entrada.
     - [x] Criar Função para substituição da biblioteca Random() para gerar id de forma sequencial.
+    - [x] Otimizar as funções de leitura e gravação dos arquivos txt.
+    - [x] Remover a colorização com códigos ANSCI do programa.
 
 
 
