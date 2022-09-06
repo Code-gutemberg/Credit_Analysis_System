@@ -1,3 +1,6 @@
+import re
+
+
 def read_int(entry):
     while True:
         try:
@@ -72,3 +75,7 @@ def read_name(entry):
             continue
         else:
             return name
+
+
+def remove_characters(entry):
+    return re.sub(r'[^0-9]', '', entry)
