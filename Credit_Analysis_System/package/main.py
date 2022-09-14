@@ -18,8 +18,11 @@ if not data.file_exists(file_root):
 while True:
     root = input('Nome do Usuário: ')
     password = input('Senha do Usuário: ')
-    data.auth(file_root, root, password)
-    if data.auth(file_root, root, password) is True:
+    user = ''
+    data.auth(file_root, root, password, user)
+    if data.auth(file_root, root, password, user)[0] is True:
+        # Define o nível do usuário
+        level = data.auth(file_root, root, password, user)[1]
         print('Checando banco de dados...')
         sleep(2)
         print(f'[SUCESS] - Usuário {root} Logado')
@@ -80,7 +83,7 @@ while True:
                                 cpf,
                                 credit,
                                 portion
-                                )
+                            )
                             stop = input()
                             os.system('cls')
                             break
@@ -135,7 +138,7 @@ while True:
                             os.system('cls')
                             break
             # MENU Cadastro de Usuário
-            elif menu == 2:
+            elif menu == 2 and level == '@superuser_root':
                 os.system('cls')
                 print(f'Usuário: {root}')
                 interface.title('[+] CADASTRAR USUÁRIO')
@@ -175,9 +178,9 @@ while True:
                                 break
                             else:
                                 print('[ERROR] - Digite SIM ou NÃO')
-                        if user in 'Nn':
-                            os.system('cls')
-                            continue
+                    if user in 'Nn':
+                        os.system('cls')
+                        continue
                 elif submenu == 2:      # SUBMENU Pessoa Jurídica
                     os.system('cls')
                     print(f'Usuário: {root}')
@@ -227,7 +230,7 @@ while True:
                             os.system('cls')
                             continue
             # MENU Remover Usuário
-            elif menu == 3:
+            elif menu == 3 and level == '@superuser_root':
                 os.system('cls')
                 print(f'Usuário: {root}')
                 interface.title('[DEL] REMOVER USUÁRIO')
@@ -290,15 +293,20 @@ while True:
                                     break
                                 else:
                                     print('[ERROR] - Digite SIM ou NÃO')
-                            if user in 'NnSs':
-                                os.system('cls')
-                                break
+                        if user in 'NnSs':
+                            os.system('cls')
+                            break
             # MENU Sair do Programa
             elif menu == 4:
                 interface.title('[!] PROGRAMA ENCERRADO COM SUCESSO!')
                 sleep(2)
                 os.system('cls')
                 break
+            elif menu == 2 or menu == 3 and level != '@superuser_root':
+                print(f'Usuario "{root}" não pode acessar o menu.')
+                sleep(2)
+                os.system('cls')
+                continue
             else:
                 interface.error_code()
                 sleep(2)
@@ -306,4 +314,7 @@ while True:
                 continue
         break
     else:
-        print('[ERROR] - Usuário ou senha inválido. Tente novamente')
+        print('Checando banco de dados...')
+        sleep(2)
+        print(f'[ERROR] - Usuário {root} não existe', end=' ')
+        print('ou senha inválida. Tente novamente.')

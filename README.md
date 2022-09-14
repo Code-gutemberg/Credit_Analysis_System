@@ -18,8 +18,10 @@ Traduzir do português brasileiro para o inglês técnico as funções e variáv
     - [x] Otimizar as funções de leitura e gravação dos arquivos txt.
     - [x] Remover a colorização com códigos ANSCI do programa.
     - [x] informar o usuário logado no programa.
-    - [x] Inserir Tags de erro e sucesso: [ERROR], [SUCESS]
-    - [x] Inserir função para tratamento de CPF e CNPJ com a técnica expressão regular
+    - [x] Inserir Tags de erro e sucesso: [ERROR], [SUCESS].
+    - [x] Inserir função para tratamento de CPF e CNPJ com a técnica expressão regular.
+    - [x] Restringir o programa de acordo com o nível do usuário: Visitante e Super Usuário.
+
 
 
 # English translation
@@ -44,8 +46,9 @@ Translate from Brazilian Portuguese to technical English the program functions a
      - [x] Optimize the functions of reading and writing txt files.
      - [x] Remove colorization with ANSCI codes from the program.
      - [x] inform the user logged into the program.
-     - [x] Insert Error and Success Tags: [ERROR], [SUCESS]
-     - [x] function for treatment CPF and CNPJ with the regular technical expression
+     - [x] Insert Error and Success Tags: [ERROR], [SUCESS].
+     - [x] function for treatment CPF and CNPJ with the regular technical expression.
+     - [x] Restrict the program according to user level: Guest and Super User.
 
 
 ---

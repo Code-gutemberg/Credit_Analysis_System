@@ -4,7 +4,7 @@ import treatment
 from time import sleep
 
 
-def auth(db_root, user='', password=''):
+def auth(db_root, user='', password='', level=''):
     if password == '':
         return False
     else:
@@ -14,7 +14,11 @@ def auth(db_root, user='', password=''):
             for line in read:
                 data = line.split(';')
                 if root == data[0] and pass_root == data[1]:
-                    return True
+                    level = data[2]
+                    return True, level
+                elif root == data[3] and pass_root == data[4]:
+                    level = data[5]
+                    return True, level
                 else:
                     return False
 
